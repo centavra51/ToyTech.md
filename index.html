@@ -1,0 +1,3268 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-t="head.title">Ремонт гибридных автомобилей в Кишиневе — ToyTech</title>
+    <meta name="description" data-t="head.description"
+        content="Диагностика и ремонт батарей, инверторов и высоковольтных систем в Кишиневе. 10+ лет опыта. Беремся за сложные случаи.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #111111;
+            --bg-card: #1A1A1A;
+            --accent-red: #DC2626;
+            --accent-red-hover: #B91C1C;
+            --accent-orange: #F59E0B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A3A3A3;
+            --text-muted: #737373;
+            --border: #262626;
+
+            --font: 'Inter', sans-serif;
+            --radius: 1.5rem;
+            --radius-sm: 1rem;
+        }
+
+        /* Reset & Base */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: var(--font);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-phone {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            color: var(--text-primary);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-red);
+            color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-red-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--text-muted);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .accent {
+            color: var(--accent-red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .hero-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--accent-orange);
+            color: #000;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .hero-price-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--accent-red);
+            border-radius: var(--radius-sm);
+        }
+
+        .hero-price-badge .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-price-badge .text {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--bg-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            color: var(--accent-red);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-red);
+        }
+
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .advantage-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .advantage-card:hover {
+            border-color: var(--accent-red);
+        }
+
+        .advantage-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .advantage-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        .about-badge {
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            padding: 1rem 1.5rem;
+            background: var(--accent-red);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .about-text h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text h2 span {
+            color: var(--accent-red);
+        }
+
+        .about-text>p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+        }
+
+        .about-feature i {
+            color: var(--accent-red);
+        }
+
+        .about-feature span {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Reviews Section */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-stars i {
+            color: var(--accent-orange);
+            fill: var(--accent-orange);
+        }
+
+        .review-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .review-author-info h4 {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .review-author-info p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--bg-secondary);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--accent-red);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--accent-red);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta>p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .cta .btn-secondary {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: var(--text-primary);
+        }
+
+        .cta .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .cta .btn-primary {
+            background: var(--text-primary);
+            color: var(--accent-red);
+        }
+
+        .cta .btn-primary:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .footer-links h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .footer-contact h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item i {
+            color: var(--accent-red);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switcher:hover {
+            border-color: var(--accent-red);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.25rem;
+            width: 140px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .lang-switcher.active .lang-dropdown {
+            display: flex;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .lang-btn.active {
+            color: var(--accent-red);
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .lang-flag {
+            width: 20px;
+            height: 14px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        /* Appointment Form */
+        .appointment {
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .appointment-form-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .appointment-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-red);
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .form-success i {
+            width: 64px;
+            height: 64px;
+            color: #10B981;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mobile Call Button */
+        .mobile-call {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--accent-red);
+            color: var(--text-primary);
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .mobile-call span {
+            display: none;
+        }
+
+        /* Service Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-body {
+            padding: 0 2rem 2rem;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .modal-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--accent-red);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* New Sections Styles */
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .process-steps::before {
+                content: '';
+                position: absolute;
+                top: 40px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: var(--border);
+                z-index: 0;
+            }
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-red);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--accent-red);
+            color: var(--text-primary);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .brands-marquee {
+            width: 100%;
+            padding: 3rem 0;
+            background: var(--bg-secondary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .brands-track {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .brand-item {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-item:hover {
+            opacity: 1;
+            color: var(--accent-red);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border: 1px solid var(--border);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            color: var(--text-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-section {
+            width: 100%;
+            height: 450px;
+            background: var(--bg-secondary);
+            position: relative;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.5) contrast(1.1) brightness(0.9);
+            transition: filter 0.5s ease;
+        }
+
+        .map-section:hover iframe {
+            filter: grayscale(0) contrast(1) brightness(1);
+        }
+
+        /* Responsive */
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mobile-call span {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 2fr;
+            }
+
+            .appointment-container {
+                grid-template-columns: 1fr 1.2fr;
+            }
+        }
+
+        /* Mobile Lang Switcher adjustment */
+        .mobile-lang {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .mobile-lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .mobile-lang-btn.active {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* Services expand animation */
+        .services-extra {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.6s ease, opacity 0.4s ease, margin-top 0.4s ease;
+            margin-top: 0;
+        }
+
+        .services-extra.expanded {
+            max-height: 800px;
+            opacity: 1;
+            margin-top: 2rem;
+        }
+
+        .services-grid-extra {
+            padding-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="logo_monolith.svg" alt="ToyTech Hybrid Specialist" style="height: 120px; width: auto;">
+            </a>
+
+            <div class="nav-links">
+                <a href="#services" data-t="nav.services">Услуги</a>
+                <a href="#advantages" data-t="nav.advantages">Преимущества</a>
+                <a href="#about" data-t="nav.about">О нас</a>
+                <a href="#reviews" data-t="nav.reviews">Отзывы</a>
+                <a href="#faq" data-t="nav.faq">FAQ</a>
+            </div>
+
+            <div class="nav-cta">
+                <div class="lang-switcher" id="langSwitcher" onclick="toggleLangDropdown()">
+                    <img src="https://flagcdn.com/ro.svg" alt="RO" class="lang-flag" id="currentLangFlag">
+                    <span id="currentLangText">RO</span>
+                    <i data-lucide="chevron-down" style="width: 14px; height: 14px;"></i>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-btn active" onclick="changeLanguage('ro')">
+                            <img src="https://flagcdn.com/ro.svg" alt="RO" class="lang-flag">
+                            Romana
+                        </button>
+                        <button class="lang-btn" onclick="changeLanguage('ru')">
+                            <img src="https://flagcdn.com/ru.svg" alt="RU" class="lang-flag">
+                            Русский
+                        </button>
+                        <button class="lang-btn" onclick="changeLanguage('en')">
+                            <img src="https://flagcdn.com/gb.svg" alt="EN" class="lang-flag">
+                            English
+                        </button>
+                    </div>
+                </div>
+                <a href="tel:+37368771547" class="nav-phone">+373 68 771 547</a>
+                <a href="#appointment" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;"
+                    data-t="nav.book">
+                    Записаться
+                </a>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div
+            style="padding: 1.5rem 1.5rem 0.5rem; border-bottom: 1px solid var(--border); margin-bottom: 1rem; width: 100%; display: flex; justify-content: center;">
+            <a href="#" class="logo">
+                <img src="logo_monolith.svg" alt="ToyTech Hybrid Specialist" style="height: 120px; width: auto;">
+            </a>
+        </div>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i data-lucide="x" style="width: 28px; height: 28px;"></i>
+        </button>
+        <a href="#services" onclick="toggleMobileMenu()" data-t="nav.services">Услуги</a>
+        <a href="#advantages" onclick="toggleMobileMenu()" data-t="nav.advantages">Преимущества</a>
+        <a href="#about" onclick="toggleMobileMenu()" data-t="nav.about">О нас</a>
+        <a href="#reviews" onclick="toggleMobileMenu()" data-t="nav.reviews">Отзывы</a>
+        <a href="#faq" onclick="toggleMobileMenu()" data-t="nav.faq">FAQ</a>
+        <div class="mobile-lang">
+            <button class="mobile-lang-btn active" onclick="changeLanguage('ro')" id="m-lang-ro">RO</button>
+            <button class="mobile-lang-btn" onclick="changeLanguage('ru')" id="m-lang-ru">RU</button>
+            <button class="mobile-lang-btn" onclick="changeLanguage('en')" id="m-lang-en">EN</button>
+        </div>
+        <a href="tel:+37368771547" class="btn btn-primary" data-t="nav.call">Позвонить</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title animate-on-scroll" data-t="hero.title">
+                        Ремонт гибридных автомобилей <span class="accent">в Кишиневе</span>
+                    </h1>
+                    <p class="hero-subtitle animate-on-scroll stagger-1" data-t="hero.subtitle">
+                        Диагностика, ремонт двигателя, электрика, тормоза. Работаем со всеми марками авто. Срочный выезд
+                        при необходимости.
+                    </p>
+                    <div class="hero-ctas animate-on-scroll stagger-2">
+                        <a href="#appointment" class="btn btn-primary" data-t="hero.cta_book">
+                            Записаться на диагностику
+                        </a>
+                        <div style="display: flex; gap: 0.75rem;">
+                            <a href="tel:+37368771547" class="btn btn-secondary">
+                                <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                                <span data-t="hero.cta_call">Позвонить</span>
+                            </a>
+                            <a href="https://t.me/+37368771547" class="btn btn-secondary"
+                                style="padding: 1rem; width: 56px;" target="_blank">
+                                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m22 2-7 20-4-9-9-4Z" />
+                                    <path d="M22 2 11 13" />
+                                </svg>
+                            </a>
+                            <a href="viber://chat?number=%2B37368771547" class="btn btn-secondary"
+                                style="padding: 1rem; width: 56px;" target="_blank">
+                                <i data-lucide="phone-forwarded" style="width: 18px; height: 18px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-stats animate-on-scroll stagger-3">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label" data-t="hero.stat_experience">Лет опыта</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label" data-t="hero.stat_repairs">Авто отремонтировано</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label" data-t="hero.stat_diagnosis">Точная диагностика</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image animate-on-scroll stagger-2">
+                    <div class="hero-image-wrapper">
+                        <img src="images/hero image.jpg" alt="Hybrid Technology">
+                        <div class="hero-badge" data-t="hero.badge">
+                            <i data-lucide="battery-charging" style="width: 16px; height: 16px;"></i>
+                            ToyTech Hybrid Specialist
+                        </div>
+                        <div class="hero-price-badge">
+                            <div class="price" data-t="hero.price">10+ лет</div>
+                            <div class="text" data-t="hero.price_text">Гарантия на все работы</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="services.label">Услуги</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="services.title">Что мы делаем</h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="services.subtitle">Полный спектр услуг
+                    по ремонту и обслуживанию</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll stagger-1" onclick="openServiceModal('s1')">
+                    <div class="service-icon">
+                        <i data-lucide="battery-charging" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s1_title">Гибридные системы</h3>
+                    <p data-t="services.s1_desc">Ремонт батарей (Li-ion), Восстановление элементов, Ремонт инверторов,
+                        Высоковольтные системы</p>
+                    <span class="service-price" data-t="services.s1_price">Диагностика</span>
+                </div>
+                <div class="service-card animate-on-scroll stagger-2" onclick="openServiceModal('s2')">
+                    <div class="service-icon">
+                        <i data-lucide="cog" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s2_title">Двигатель и механика</h3>
+                    <p data-t="services.s2_desc">Капитальный ремонт ДВС, устранение сложных неисправностей, ремонт
+                        ходовой части</p>
+                    <span class="service-price" data-t="services.s2_price">Механика</span>
+                </div>
+                <div class="service-card animate-on-scroll stagger-3" onclick="openServiceModal('s3')">
+                    <div class="service-icon">
+                        <i data-lucide="zap" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s3_title">Электроника и настройки</h3>
+                    <p data-t="services.s3_desc">Диагностика электронных систем, ABS блоки, чип-тюнинг, EGR OFF / DPF
+                    </p>
+                    <span class="service-price" data-t="services.s3_price">Электроника</span>
+                </div>
+                <div class="service-card animate-on-scroll stagger-1" onclick="openServiceModal('s4')">
+                    <div class="service-icon">
+                        <i data-lucide="wind" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s4_title">Выхлопная система</h3>
+                    <p data-t="services.s4_desc">Замена катализатора, оптимизация выхлопа, решение проблем экологии</p>
+                    <span class="service-price" data-t="services.s4_price">Экология</span>
+                </div>
+                <div class="service-card animate-on-scroll stagger-2" onclick="openServiceModal('s5')">
+                    <div class="service-icon">
+                        <i data-lucide="brush" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s5_title">Кузовные работы</h3>
+                    <p data-t="services.s5_desc">Рихтовка, покраска, восстановление после ДТП</p>
+                    <span class="service-price" data-t="services.s5_price">Покраска</span>
+                </div>
+                <div class="service-card animate-on-scroll stagger-3" onclick="openServiceModal('s6')">
+                    <div class="service-icon">
+                        <i data-lucide="bike" style="width: 28px; height: 28px;"></i>
+                    </div>
+                    <h3 data-t="services.s6_title">Мотоциклы</h3>
+                    <p data-t="services.s6_desc">Профессиональный ремонт и обслуживание мототехники всех марок</p>
+                    <span class="service-price" data-t="services.s6_price">Мото</span>
+                </div>
+            </div>
+
+            <!-- Hidden extra cards -->
+            <div class="services-extra" id="servicesExtra">
+                <div class="services-grid services-grid-extra">
+                    <div class="service-card animate-on-scroll stagger-1" onclick="openServiceModal('s7')">
+                        <div class="service-icon">
+                            <i data-lucide="shield-check" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s7_title">Предпродажная проверка</h3>
+                        <p data-t="services.s7_desc">Полная диагностика автомобиля перед покупкой. Проверка скрытых
+                            дефектов и истории ДТП.</p>
+                        <span class="service-price" data-t="services.s7_price">Проверка</span>
+                    </div>
+                    <div class="service-card animate-on-scroll stagger-2" onclick="openServiceModal('s8')">
+                        <div class="service-icon">
+                            <i data-lucide="gauge" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s8_title">Развал-схождение</h3>
+                        <p data-t="services.s8_desc">Диагностика и регулировка углов схождения, замена сайлентблоков и
+                            шаровых опор.</p>
+                        <span class="service-price" data-t="services.s8_price">Ходовая</span>
+                    </div>
+                    <div class="service-card animate-on-scroll stagger-3" onclick="openServiceModal('s9')">
+                        <div class="service-icon">
+                            <i data-lucide="thermometer" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s9_title">Система охлаждения</h3>
+                        <p data-t="services.s9_desc">Замена радиатора, термостата, патрубков. Промывка системы
+                            охлаждения.</p>
+                        <span class="service-price" data-t="services.s9_price">Охлаждение</span>
+                    </div>
+                    <div class="service-card animate-on-scroll stagger-1" onclick="openServiceModal('s10')">
+                        <div class="service-icon">
+                            <i data-lucide="box" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s10_title">КПП и МКПП</h3>
+                        <p data-t="services.s10_desc">Ремонт автоматических и механических коробок передач, замена масла
+                            и фильтров.</p>
+                        <span class="service-price" data-t="services.s10_price">КПП</span>
+                    </div>
+                    <div class="service-card animate-on-scroll stagger-2" onclick="openServiceModal('s11')">
+                        <div class="service-icon">
+                            <i data-lucide="droplets" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s11_title">Замена масла и ТО</h3>
+                        <p data-t="services.s11_desc">Замена моторного масла, фильтров, свечей. Плановое техническое
+                            обслуживание.</p>
+                        <span class="service-price" data-t="services.s11_price">ТО</span>
+                    </div>
+                    <div class="service-card animate-on-scroll stagger-3" onclick="openServiceModal('s12')">
+                        <div class="service-icon">
+                            <i data-lucide="air-vent" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h3 data-t="services.s12_title">Кондиционер</h3>
+                        <p data-t="services.s12_desc">Заправка, чистка испарителя, устранение неприятных запахов.
+                            Обслуживание климата.</p>
+                        <span class="service-price" data-t="services.s12_price">Климат</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load more button -->
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <button id="servicesToggleBtn" onclick="toggleServices()" class="btn btn-secondary"
+                    style="gap: 0.75rem; padding: 1rem 2.5rem; border-color: var(--accent-red); color: var(--accent-red);">
+                    <i data-lucide="chevron-down" id="servicesToggleIcon"
+                        style="width: 18px; height: 18px; transition: transform 0.3s ease;"></i>
+                    <span id="servicesToggleText" data-t="services.btn_more">Загрузить ещё услуги</span>
+                    <span
+                        style="background: var(--accent-red); color: #fff; border-radius: 9999px; padding: 0.15rem 0.6rem; font-size: 0.8rem; font-weight: 700;">+6</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section" id="advantages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="advantages.label">Почему мы</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="advantages.title">Преимущества ToyTech
+                </h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="advantages.subtitle">То, что отличает
+                    нас от других автосервисов</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card animate-on-scroll stagger-1">
+                    <div class="advantage-number">15</div>
+                    <h3 data-t="advantages.a1_title">Быстрая диагностика</h3>
+                    <p data-t="advantages.a1_desc">Определяем проблему за 15 минут с помощью современного оборудования.
+                    </p>
+                </div>
+                <div class="advantage-card animate-on-scroll stagger-2">
+                    <div class="advantage-number">100%</div>
+                    <h3 data-t="advantages.a2_title">Сертифицированные механики</h3>
+                    <p data-t="advantages.a2_desc">Наши специалисты прошли обучение у официальных дилеров.</p>
+                </div>
+                <div class="advantage-card animate-on-scroll stagger-3">
+                    <div class="advantage-number">All</div>
+                    <h3 data-t="advantages.a3_title">Все марки авто</h3>
+                    <p data-t="advantages.a3_desc">Ремонтируем европейские, японские, корейские и американские авто.</p>
+                </div>
+                <div class="advantage-card animate-on-scroll stagger-4">
+                    <div class="advantage-number">12</div>
+                    <h3 data-t="advantages.a4_title">Гарантия месяцев</h3>
+                    <p data-t="advantages.a4_desc">Даём письменную гарантию на все виды работ и запчасти.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Work Process Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="process.label">Как мы работаем</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="process.title">Путь к исправному авто</h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="process.subtitle">Прозрачность и
+                    качество на каждом этапе ремонта</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll stagger-1">
+                    <div class="step-number">01</div>
+                    <div class="step-title" data-t="process.step1_title">Диагностика</div>
+                    <div class="step-desc" data-t="process.step1_desc">Тщательно проверяем все узлы и выявляем реальные
+                        причины неисправности.</div>
+                </div>
+                <div class="process-step animate-on-scroll stagger-2">
+                    <div class="step-number">02</div>
+                    <div class="step-title" data-t="process.step2_title">Расчет и сроки</div>
+                    <div class="step-desc" data-t="process.step2_desc">Согласовываем с вами стоимость работ и запчастей
+                        перед началом ремонта.</div>
+                </div>
+                <div class="process-step animate-on-scroll stagger-3">
+                    <div class="step-number">03</div>
+                    <div class="step-title" data-t="process.step3_title">Ремонт</div>
+                    <div class="step-desc" data-t="process.step3_desc">Профессионально выполняем работы с использованием
+                        современного оборудования.</div>
+                </div>
+                <div class="process-step animate-on-scroll stagger-4">
+                    <div class="step-number">04</div>
+                    <div class="step-title" data-t="process.step4_title">Готово</div>
+                    <div class="step-desc" data-t="process.step4_desc">Тестируем автомобиль и выдаем его вам вместе с
+                        актом работ и гарантией.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image animate-on-scroll">
+                    <img src="images/master.png" alt="Наша команда">
+                    <div class="about-badge" data-t="about.since">С 2014 года</div>
+                </div>
+                <div class="about-text">
+                    <h2 class="animate-on-scroll" data-t="about.title">ToyTech — это <span>команда
+                            профессионалов</span></h2>
+                    <p class="animate-on-scroll stagger-1" data-t="about.desc">Мы начали с небольшой мастерской в 2014
+                        году и выросли в один из самых надёжных автосервисов Кишинева. Наша цель проста: делать
+                        качественный ремонт по честной цене.</p>
+                    <div class="about-features animate-on-scroll stagger-2">
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f1">10+ лет опыта</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f2">Специализация на гибридах</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f3">Сложные случаи</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f4">Оригинальные запчасти</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f5">Честный ремонт</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="check" style="width: 18px; height: 18px;"></i>
+                            <span data-t="about.f6">Полный цикл работ</span>
+                        </div>
+                    </div>
+                    <a href="tel:+37368771547" class="btn btn-primary animate-on-scroll stagger-3">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <span data-t="about.call_btn">+373 68 771 547</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Brands Specialization -->
+    <section class="brands-marquee">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; text-align: center; color: var(--text-secondary);"
+                    data-t="brands.title">Работаем со всеми ведущими брендами</h3>
+            </div>
+            <div class="brands-track">
+                <div class="brand-item">Toyota Hybrid</div>
+                <div class="brand-item">Lexus Hybrid</div>
+                <div class="brand-item">Honda Insight/Civic</div>
+                <div class="brand-item">Hyundai Ioniq</div>
+                <div class="brand-item">Kia Niro</div>
+                <div class="brand-item">Ford Fusion Hybrid</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section appointment" id="appointment">
+        <div class="container">
+            <div class="appointment-container">
+                <div class="appointment-text">
+                    <span class="section-label animate-on-scroll" data-t="form.label">Онлайн запись</span>
+                    <h2 class="section-title animate-on-scroll stagger-1" data-t="form.title">Запишитесь на сервис прямо
+                        сейчас</h2>
+                    <p class="section-subtitle animate-on-scroll stagger-2" data-t="form.subtitle">Заполните форму, и
+                        наш менеджер свяжется с вами в течение 15 минут для подтверждения времени.</p>
+
+                    <div style="margin-top: 2rem;" class="animate-on-scroll stagger-3">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-red);">
+                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <span data-t="form.benefit1">Мгновенное подтверждение</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-red);">
+                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <span data-t="form.benefit2">Бесплатная консультация</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div
+                                style="width: 40px; height: 40px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-red);">
+                                <i data-lucide="check-circle" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <span data-t="form.benefit3">Скидка 5% при записи с сайта</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appointment-form-wrapper animate-on-scroll stagger-2">
+                    <form id="appointmentForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" data-t="form.name">Ваше имя</label>
+                                <input type="text" id="name" class="form-control" placeholder="Иван Иванов" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-t="form.phone">Телефон</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="+373 68 771 547"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="car" data-t="form.car">Марка и модель авто</label>
+                                <input type="text" id="car" class="form-control" placeholder="BMW X5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service" data-t="form.service">Tipul serviciului</label>
+                                <select id="service" class="form-control">
+                                    <option value="diagnostics" data-t="services.s1_title">Диагностика двигателя
+                                    </option>
+                                    <option value="mechanic" data-t="services.s2_title">Механический ремонт</option>
+                                    <option value="brakes" data-t="services.s3_title">Тормозная система</option>
+                                    <option value="suspension" data-t="services.suspension">Подвеска</option>
+                                    <option value="oil" data-t="services.s5_title">Замена масла</option>
+                                    <option value="electric" data-t="services.s6_title">Электрика</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" data-t="form.date">Желаемая дата</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" data-t="form.submit">
+                            Записаться на сервис
+                        </button>
+                    </form>
+
+                    <div id="formSuccess" class="form-success">
+                        <i data-lucide="check-circle"></i>
+                        <h3 data-t="form.success_title">Заявка отправлена!</h3>
+                        <p data-t="form.success_text">Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+                        <button class="btn btn-secondary" style="margin-top: 1.5rem;" onclick="resetForm()"
+                            data-t="form.back">Назад</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Photo Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="gallery.label">Наши работы</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="gallery.title">Процесс в деталях</h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="gallery.subtitle">Взгляд изнутри на наш
+                    профессиональный подход</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll stagger-1">
+                    <img src="images/process_diag.png" alt="Диагностика электроники">
+                    <div class="gallery-overlay">
+                        <h4 data-t="gallery.i1_title">Компьютерная диагностика</h4>
+                        <p data-t="gallery.i1_desc">Поиск скрытых ошибок в ЭБУ</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll stagger-2">
+                    <img src="images/process_repair.png" alt="Ремонт двигателя">
+                    <div class="gallery-overlay">
+                        <h4 data-t="gallery.i2_title">Обслуживание ДВС</h4>
+                        <p data-t="gallery.i2_desc">Капитальный ремонт и ТО</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll stagger-3">
+                    <img src="images/brands_collage.png" alt="Наш сервис">
+                    <div class="gallery-overlay">
+                        <h4 data-t="gallery.i3_title">Современные боксы</h4>
+                        <p data-t="gallery.i3_desc">6 оборудованных подъемников</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="reviews.label">Отзывы</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="reviews.title">Что говорят наши клиенты
+                </h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="reviews.subtitle">Реальные отзывы от
+                    реальных людей</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card animate-on-scroll stagger-1">
+                    <div class="review-stars">
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                    </div>
+                    <p class="review-text" data-t="reviews.r1_text">"Сломался кондиционер посреди июльской жары. Приехал
+                        утром, к обеду всё починили. Цена оказалась даже ниже, чем озвучили по телефону. Приятно удивлён
+                        честностью!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">АК</div>
+                        <div class="review-author-info">
+                            <h4 data-t="reviews.r1_author">Алексей К.</h4>
+                            <p data-t="reviews.r1_car">Владелец BMW X5</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card animate-on-scroll stagger-2">
+                    <div class="review-stars">
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                    </div>
+                    <p class="review-text" data-t="reviews.r2_text">"Проездом был в Кишиневе, возникла проблема с
+                        подвеской. Ребята не только быстро всё исправили, но и подробно объяснили, что случилось.
+                        Рекомендую всем!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">ДМ</div>
+                        <div class="review-author-info">
+                            <h4 data-t="reviews.r2_author">Дмитрий М.</h4>
+                            <p data-t="reviews.r2_car">Турист, Москва</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card animate-on-scroll stagger-3">
+                    <div class="review-stars">
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                        <i data-lucide="star" style="width: 18px; height: 18px;"></i>
+                    </div>
+                    <p class="review-text" data-t="reviews.r3_text">"Обслуживаю здесь семейный автопарк уже третий год —
+                        две машины. Всегда чётко, в срок и по справедливой цене. Недавно делали ТО и замену тормозных
+                        дисков."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">ИП</div>
+                        <div class="review-author-info">
+                            <h4 data-t="reviews.r3_author">Игорь П.</h4>
+                            <p data-t="reviews.r3_car">Постоянный клиент</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-on-scroll" data-t="faq.label">FAQ</span>
+                <h2 class="section-title animate-on-scroll stagger-1" data-t="faq.title">Часто задаваемые вопросы</h2>
+                <p class="section-subtitle animate-on-scroll stagger-2" data-t="faq.subtitle">Ответы на популярные
+                    вопросы наших клиентов</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll stagger-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-t="faq.q1">Сколько времени занимает диагностика?</span>
+                        <i data-lucide="chevron-down" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-t="faq.a1">Компьютерная диагностика занимает около 15-20 минут. Полная диагностика всех
+                            систем автомобиля, включая ходовую часть, тормоза и электрику — до 1 часа. Точное время
+                            зависит от марки и модели автомобиля.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-t="faq.q2">Даёте ли вы гарантию на работы?</span>
+                        <i data-lucide="chevron-down" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-t="faq.a2">Да, мы предоставляем письменную гарантию на все виды работ. Срок гарантии
+                            зависит от типа ремонта: от 3 месяцев на мелкий ремонт до 12 месяцев на капитальный ремонт
+                            двигателя или КПП. Гарантия распространяется как на работу, так и на установленные запчасти.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-3">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-t="faq.q3">Работаете ли вы с иностранными автомобилями?</span>
+                        <i data-lucide="chevron-down" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-t="faq.a3">Да, мы работаем со всеми марками автомобилей: европейскими (Mercedes, BMW,
+                            Audi, Volkswagen, Renault, Peugeot), японскими (Toyota, Honda, Nissan, Mazda), корейскими
+                            (Hyundai, Kia) и американскими. Наши механики прошли специализированное обучение.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-1">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-t="faq.q4">Можно ли привезти свои запчасти?</span>
+                        <i data-lucide="chevron-down" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-t="faq.a4">Да, вы можете привезти свои запчасти. Однако мы рекомендуем покупать запчасти
+                            через нас — мы
+                            работаем с проверенными поставщиками и даём гарантию на оригинальные детали. Если вы
+                            привозите свои запчасти, гарантия на них не распространяется.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll stagger-2">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span data-t="faq.q5">Есть ли эвакуатор и помощь на дороге?</span>
+                        <i data-lucide="chevron-down" style="width: 24px; height: 24px;"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-t="faq.a5">Наш сервис расположен по адресу: Кишинев, ул. Grenoble 7. Ждем вас!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="animate-on-scroll" data-t="cta.title">Готовы отдать свой автомобиль в надёжные руки?</h2>
+                <p class="animate-on-scroll stagger-1" data-t="cta.subtitle">Позвоните сейчас или приезжайте на
+                    бесплатную диагностику</p>
+                <div class="cta-buttons animate-on-scroll stagger-2">
+                    <a href="tel:+37368771547" class="btn btn-primary">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <span data-t="cta.btn_call">Позвонить</span>
+                    </a>
+                    <a href="#appointment" class="btn btn-secondary">
+                        <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+                        <span data-t="cta.btn_book">Записаться на диагностику</span>
+                    </a>
+                </div>
+                <div class="cta-messengers animate-on-scroll stagger-3"
+                    style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                    <a href="https://www.instagram.com/toytech.md/" class="messenger-link" target="_blank"
+                        style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+                        <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+                    </a>
+                    <a href="https://www.facebook.com/ToyTech.md" class="messenger-link" target="_blank"
+                        style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+                        <i data-lucide="facebook" style="width: 20px; height: 20px;"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@toytech.md" class="messenger-link" target="_blank"
+                        style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.89-.23-2.74.24-.73.41-1.31 1.07-1.58 1.86-.2.55-.24 1.15-.11 1.72.11.7.54 1.34 1.09 1.81.55.47 1.25.73 1.96.73.5-.01.99-.11 1.45-.3 1.09-.45 1.93-1.46 2.13-2.6.06-.38.08-.75.08-1.14V.02z" />
+                        </svg>
+                    </a>
+                </div>
+                <style>
+                    .messenger-link:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        transform: translateY(-3px);
+                        border-color: #fff;
+                    }
+                </style>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" style="margin-bottom: 2rem;">
+        <div class="section-header" style="text-align: center; margin-bottom: 0;">
+            <span class="section-label animate-on-scroll" data-t="location.label">Локация</span>
+            <h2 class="section-title animate-on-scroll stagger-1" data-t="location.title">Наш сервис в Кишиневе</h2>
+        </div>
+    </div>
+    <section class="map-section" id="location">
+        <iframe src="https://www.google.com/maps?q=46.991521,28.821943&hl=ru&z=16&output=embed" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo_monolith.svg" alt="ToyTech Hybrid Specialist" style="height: 120px; width: auto;">
+                    <p data-t="footer.brand_text">Специализированный сервис по ремонту гибридных автомобилей и сложных
+                        систем в Кишиневе. Более 10 лет опыта.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/ToyTech.md" aria-label="Facebook" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+
+                        <a href="https://www.instagram.com/toytech.md/" aria-label="Instagram" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@toytech.md" aria-label="TikTok" target="_blank">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path
+                                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.89-.23-2.74.24-.73.41-1.31 1.07-1.58 1.86-.2.55-.24 1.15-.11 1.72.11.7.54 1.34 1.09 1.81.55.47 1.25.73 1.96.73.5-.01.99-.11 1.45-.3 1.09-.45 1.93-1.46 2.13-2.6.06-.38.08-.75.08-1.14V.02z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 data-t="footer.services">Услуги</h4>
+                    <ul>
+                        <li><a href="#services" data-t="footer.s1">Гибридные системы</a></li>
+                        <li><a href="#services" data-t="footer.s2">ДВС и ходовая</a></li>
+                        <li><a href="#services" data-t="footer.s3">Электроника</a></li>
+                        <li><a href="#services" data-t="footer.s4">Выхлопная система</a></li>
+                        <li><a href="#services" data-t="footer.s5">Кузовной ремонт</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-t="footer.company">ToyTech</h4>
+                    <ul>
+                        <li><a href="#about" data-t="footer.c1">О нас</a></li>
+                        <li><a href="#reviews" data-t="footer.c2">Отзывы</a></li>
+                        <li><a href="#faq" data-t="footer.c3">FAQ</a></li>
+                        <li><a href="#advantages" data-t="footer.c4">Преимущества</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-t="footer.contacts">Контакты</h4>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                        <span>Кишинев, ул. Grenoble 7</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <span>+373 68 771 547</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="instagram" style="width: 18px; height: 18px;"></i>
+                        <span>ToyTech.md</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="clock" style="width: 18px; height: 18px;"></i>
+                        <span><span data-t="footer.mon-fri">Пн-Пт</span>: 9:00-18:00, <span
+                                data-t="footer.sat">Сб</span>: 9:00-14:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ToyTech. <span data-t="footer.copyright">Все права защищены.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Call Button -->
+    <a href="tel:+37368771547" class="mobile-call">
+        <i data-lucide="phone" style="width: 24px; height: 24px;"></i>
+        <span data-t="nav.call">Позвонить</span>
+    </a>
+
+    <!-- Service Modal -->
+    <div class="modal-overlay" id="serviceModal" onclick="closeServiceModal(event)">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">
+                    <i data-lucide="cog" style="width: 24px; height: 24px;"></i>
+                </div>
+                <button class="close-modal" onclick="closeServiceModal()">
+                    <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle">Service Title</h2>
+                <div class="modal-desc" id="modalDesc">Service description goes here...</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" style="flex: 1;" onclick="bookFromModal()"
+                    data-t="modal.book_btn">Записаться</button>
+                <button class="btn btn-secondary" onclick="closeServiceModal()" data-t="form.back">Назад</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Translations
+        const translations = {
+            ru: {
+                "head.title": "Ремонт гибридных автомобилей в Кишиневе — ToyTech",
+                "head.description": "Диагностика и ремонт батарей, инверторов и высоковольтных систем в Кишиневе. 10+ лет опыта. Беремся за сложные случаи.",
+                "nav.services": "Услуги",
+                "nav.advantages": "Проблемы",
+                "nav.about": "О нас",
+                "nav.reviews": "Отзывы",
+                "nav.faq": "FAQ",
+                "nav.call": "Позвонить",
+                "nav.book": "Записаться",
+                "hero.title": "Ремонт гибридных автомобилей <span class=\"accent\">в Кишиневе</span>",
+                "hero.subtitle": "Диагностика и ремонт батарей, инверторов и высоковольтных систем. Беремся за сложные случаи, где другие сервисы не справились.",
+                "hero.cta_book": "Записаться на диагностику",
+                "hero.cta_call": "Позвонить",
+                "hero.stat_experience": "Лет опыта",
+                "hero.stat_repairs": "Авто отремонтировано",
+                "hero.stat_diagnosis": "Точная диагностика",
+                "hero.badge": "ToyTech Hybrid Specialist",
+                "hero.price": "10+ лет",
+                "hero.price_text": "Гарантия на все работы",
+                "services.label": "Наши услуги",
+                "services.title": "Что мы ремонтируем",
+                "services.subtitle": "Полный спектр работ: от батарей до кузовного ремонта",
+                "services.s1_title": "Гибридные системы",
+                "services.s1_desc": "Ремонт батарей (Li-ion), Восстановление модулей, Ремонт инверторов",
+                "services.s1_price": "Диагностика",
+                "services.s1_long_desc": "Профессиональная диагностика и ремонт высоковольтных батарей (ВВБ). Проводим балансировку элементов, замену неисправных модулей и полное восстановление емкости. Используем специализированное оборудование для тестирования под нагрузкой.",
+                "services.s2_title": "Двигатель и механика",
+                "services.s2_desc": "Капитальный ремонт ДВС, устранение сложных неисправностей, ремонт ходовой",
+                "services.s2_price": "Механика",
+                "services.s2_long_desc": "Полный комплекс работ по механической части автомобиля. От планового ТО и замены масла до капитального ремонта двигателя и обслуживания ходовой части. Гарантируем высокое качество сборки и использование проверенных запчастей.",
+                "services.s3_title": "Электроника и тюнинг",
+                "services.s3_desc": "ABS блоки, Чип-тюнинг, EGR OFF / DPF программирование",
+                "services.s3_price": "Электроника",
+                "services.s3_long_desc": "Глубокая диагностика электронных блоков управления. Ремонт систем ABS/VSC, прошивка блоков, программное удаление EGR и сажевых фильтров (DPF), а также чип-тюнинг для оптимизации работы гибридной установки.",
+                "services.s4_title": "Выхлопная система",
+                "services.s4_desc": "Замена катализатора, решение проблем экологии, программное отключение EGR/DPF.",
+                "services.s4_price": "Экология",
+                "services.s4_long_desc": "Обслуживание и тюнинг выхлопных систем. Замена катализаторов на пламегасители, установка обманок, сварка аргоном и устранение неприятных запахов или лишнего шума.",
+                "services.s5_title": "Кузовные работы",
+                "services.s5_desc": "Рихтовка любой сложности, качественная покраска и восстановление после ДТП.",
+                "services.s5_price": "Покраска",
+                "services.s5_long_desc": "Восстановление геометрии кузова на стапеле, рихтовка, профессиональная покраска в камере и полировка. Беремся за повреждения любой сложности, от мелких царапин до последствий серьезных ДТП.",
+                "services.s6_title": "Мотоциклы",
+                "services.s6_desc": "Профессиональный ремонт и техническое обслуживание мототехники всех марок.",
+                "services.s6_price": "Мото",
+                "services.s6_long_desc": "Техническое обслуживание и сложный ремонт мототехники всех классов. Ремонт двигателей, настройка карбюраторов/инжекторов, подготовка к сезону и установка дополнительного оборудования.",
+                "services.s7_title": "Предпродажная проверка",
+                "services.s7_desc": "Полная диагностика автомобиля перед покупкой.",
+                "services.s7_price": "Проверка",
+                "services.s7_long_desc": "Комплексная проверка автомобиля перед покупкой: сканирование всех блоков, проверка состояния ВВБ, осмотр ходовой и кузова на предмет скрытых повреждений. Получите полный отчет о реальном состоянии авто.",
+                "services.s8_title": "Развал-схождение",
+                "services.s8_desc": "Регулировка углов установки колес.",
+                "services.s8_price": "Ходовая",
+                "services.s8_long_desc": "Высокоточная регулировка развала и схождения колес на современном стенде. Это обеспечит устойчивость автомобиля на дороге, равномерный износ шин и правильную работу систем стабилизации.",
+                "services.s9_title": "Система охлаждения",
+                "services.s9_desc": "Обслуживание контуров охлаждения ДВС и инвертора.",
+                "services.s9_price": "Охлаждение",
+                "services.s9_long_desc": "Критически важная услуга для гибридов. Промывка радиаторов, замена антифриза в обоих контурах (ДВС и гибридная система), проверка помпы. Предотвратите перегрев дорогостоящего инвертора.",
+                "services.s10_title": "КПП и МКПП",
+                "services.s10_desc": "Ремонт и обслуживание трансмиссии.",
+                "services.s10_price": "КПП",
+                "services.s10_long_desc": "Диагностика и ремонт коробок передач. Проверка планетарных передач гибридов, замена масла в трансмиссии, устранение течей и посторонних шумов.",
+                "services.s11_title": "Замена масла и ТО",
+                "services.s11_desc": "Плановое техническое обслуживание.",
+                "services.s11_price": "ТО",
+                "services.s11_long_desc": "Регулярное обслуживание: замена моторного масла, всех фильтров, свечей зажигания и проверка технических жидкостей. Используем масла, рекомендованные производителями гибридов.",
+                "services.s12_title": "Кондиционер",
+                "services.s12_desc": "Заправка и чистка системы климата.",
+                "services.s12_price": "Климат",
+                "services.s12_long_desc": "Обслуживание систем кондиционирования. Заправка фреоном с использованием масел для электрических компрессоров, антибактериальная чистка испарителя и замена салонного фильтра.",
+                "advantages.label": "Ошибки и проблемы",
+                "advantages.title": "С чем мы помогаем",
+                "advantages.subtitle": "Если у вас один из этих симптомов — приезжайте на диагностику",
+                "advantages.a1_title": "Ошибка батареи",
+                "advantages.a1_desc": "Гибрид не тянет или работает нестабильно, горит ошибка гибридной системы.",
+                "advantages.a2_title": "Проблемы с инвертором",
+                "advantages.a2_desc": "Авто уходит в аварийный режим, не включается Ready или слышны посторонние звуки.",
+                "advantages.a3_title": "Сложная диагностика",
+                "advantages.a3_desc": "Другие сервисы не могут найти причину или предлагают менять всё подряд.",
+                "advantages.a4_title": "Механические неисправности",
+                "advantages.a4_desc": "Двигатель, ходовая часть, тормозная система, посторонние шумы при езде.",
+                "location.label": "Локация",
+                "location.title": "Кишинев, ул. Grenoble 7",
+                "process.label": "Как мы работаем",
+                "process.title": "5 шагов к исправному авто",
+                "process.subtitle": "Прозрачный процесс от приема до выдачи",
+                "process.step1_title": "1. Диагностика автомобиля",
+                "process.step1_desc": "Тщательно проверяем все системы и выявляем реальную причину проблемы.",
+                "process.step2_title": "2. Определение причины",
+                "process.step2_desc": "Находим корень проблемы, чтобы устранить её навсегда, а не просто сбросить ошибку.",
+                "process.step3_title": "3. Согласование стоимости",
+                "process.step3_desc": "Честная оценка ремонта и запчастей перед началом любых работ.",
+                "process.step4_title": "4. Ремонт",
+                "process.step4_desc": "Профессиональное восстановление узлов с использованием проверенных запчастей.",
+                "process.step5_title": "5. Проверка и выдача",
+                "process.step5_desc": "Итоговое тестирование и передача исправного автомобиля владельцу.",
+                "brands.title": "Специализация на гибридах и сложных системах",
+                "gallery.label": "ToyTech в деталях",
+                "gallery.title": "Наш подход",
+                "gallery.subtitle": "Мы не угадываем — мы точно определяем неисправность",
+                "gallery.i1_title": "Ремонт ВВБ",
+                "gallery.i1_desc": "Восстановление элементов высоковольтных батарей",
+                "gallery.i2_title": "Инверторы",
+                "gallery.i2_desc": "Сложный ремонт электроники инверторов",
+                "gallery.i3_title": "Диагностика",
+                "gallery.i3_desc": "Дилерское оборудование для всех марок",
+                "about.badge": "10+ лет опыта",
+                "about.title": "Точная диагностика и <span>решение проблемы</span>",
+                "about.desc": "Мы находим причину неисправности и устраняем её, а не просто маскируем симптомы.<br><br>Вы получаете:<br>— точное понимание проблемы<br>— честную оценку ремонта<br>— решение без лишних затрат",
+                "about.f1": "10+ лет опыта",
+                "about.f2": "Оригинальные запчасти",
+                "about.f3": "Сложные случаи",
+                "about.f4": "Сложные случаи",
+                "about.f5": "Честный ремонт",
+                "about.f6": "Полный цикл работ",
+                "reviews.label": "Отзывы",
+                "reviews.title": "Что говорят клиенты ToyTech",
+                "reviews.subtitle": "Сотни отремонтированных гибридов и довольных владельцев",
+                "reviews.r1_text": "\"Проблема с батареей на Приусе решена за два дня. В других местах предлагали просто замену всей батареи, здесь восстановили элементы. Большое спасибо!\"",
+                "reviews.r1_author": "Алексей С.",
+                "reviews.r1_car": "Toyota Prius 30",
+                "reviews.r2_text": "\"Инвертор на Лексусе ушел в ошибку. Ребята в ToyTech единственные, кто взялся за ремонт, а не замену. Работает идеально уже полгода.\"",
+                "reviews.r2_author": "Максим В.",
+                "reviews.r2_car": "Lexus RX450h",
+                "reviews.r3_text": "\"Приезжаю сюда на плановое ТО и диагностику. Всегда честно говорят, что нужно делать, а что может подождать. Рекомендую всем гибридоводам.\"",
+                "reviews.r3_author": "Елена М.",
+                "reviews.r3_car": "Toyota Rav4 Hybrid",
+                "faq.title": "Вопросы и ответы",
+                "faq.subtitle": "Всё, что вам нужно знать перед визитом",
+                "faq.q1": "Сколько стоит диагностика?",
+                "faq.a1": "Стоимость зависит от сложности проблемы и типа систем, которые нужно проверить. Точная цена уточняется после первичного осмотра.",
+                "faq.q2": "Сколько длится ремонт?",
+                "faq.a2": "Ремонт может занимать от нескольких часов (при типичных неисправностях) до нескольких дней (при сложном восстановлении батарей или инверторов).",
+                "faq.q3": "Есть ли гарантия?",
+                "faq.a3": "Да, мы предоставляем гарантию на все выполненные работы и установленные нами запасные части.",
+                "form.label": "Диагностика",
+                "form.title": "Записаться на диагностику",
+                "form.subtitle": "Оставьте заявку — мы свяжемся с вами и подберем удобное время.",
+                "form.benefit1": "Точный диагноз",
+                "form.benefit2": "Честная цена",
+                "form.benefit3": "Сертифицированные мастера",
+                "form.name": "Ваше имя",
+                "form.phone": "Телефон",
+                "form.car": "Марка и модель авто",
+                "form.submit": "Записаться на диагностику",
+                "form.select_service": "Выберите тип услуги",
+                "form.date": "Желаемая дата",
+                "form.success_title": "Заявка отправлена!",
+                "form.success_text": "Мы свяжемся с вами в ближайшее время для уточнения деталей.",
+                "form.back": "Назад",
+                "cta.title": "Запишитесь на диагностику",
+                "cta.subtitle": "Оставьте заявку — мы свяжемся с вами и подберем удобное время",
+                "cta.btn_call": "Позвонить",
+                "cta.btn_book": "Записаться на прием",
+                "about.since": "Более 10 лет",
+                "about.call_btn": "+373 68 771 547",
+                "faq.label": "FAQ",
+                "faq.q4": "Работаете ли вы с гибридами Toyota?",
+                "faq.a4": "Да, мы специализируемся на гибридах Toyota и Lexus, включая Prius, Camry, RAV4 и всю линейку гибридных моделей.",
+                "faq.q5": "Где вы находитесь?",
+                "faq.a5": "Наш сервис расположен по адресу: Кишинев, ул. Grenoble 7. Ждем вас!",
+                "footer.services": "Услуги",
+                "footer.company": "ToyTech",
+                "footer.contacts": "Контакты",
+                "footer.mon-fri": "Пн-Пт",
+                "footer.sat": "Сб",
+                "footer.copyright": "Все права защищены.",
+                "footer.s1": "Гибридные системы",
+                "footer.s2": "ДВС и ходовая",
+                "footer.s3": "Электроника",
+                "footer.s4": "Выхлопная система",
+                "footer.s5": "Кузовной ремонт",
+                "footer.c1": "О нас",
+                "footer.c2": "Отзывы",
+                "footer.c3": "FAQ",
+                "footer.c4": "Преимущества",
+                "footer.brand_text": "Специализированный сервис по ремонту гибридных автомобилей и сложных систем в Кишиневе. Более 10 лет опыта.",
+                "services.btn_more": "Загрузить ещё услуги",
+                "modal.book_btn": "Записаться на сервис"
+            },
+            ro: {
+                "head.title": "Repararea mașinilor hibride în Chișinău — ToyTech",
+                "head.description": "Diagnoză și repararea bateriilor, invertoarelor și sistemelor de înaltă tensiune în Chișinău. 10+ ani de experiență. Acceptăm cazuri complexe.",
+                "nav.services": "Servicii",
+                "nav.advantages": "Probleme",
+                "nav.about": "Despre noi",
+                "nav.reviews": "Recenzii",
+                "nav.faq": "FAQ",
+                "nav.call": "Sunați",
+                "nav.book": "Programare",
+                "hero.title": "Repararea mașinilor hibride <span class=\"accent\">în Chișinău</span>",
+                "hero.subtitle": "Diagnoză și repararea bateriilor, invertoarelor și sistemelor de înaltă tensiune. Acceptăm cazuri complexe, unde alte service-uri nu au reușit.",
+                "hero.cta_book": "Programare diagnoză",
+                "hero.cta_call": "Sunați",
+                "hero.stat_experience": "Ani de experiență",
+                "hero.stat_repairs": "Mașini reparate",
+                "hero.stat_diagnosis": "Diagnoză precisă",
+                "hero.badge": "ToyTech Hybrid Specialist",
+                "hero.price": "10+ ani",
+                "hero.price_text": "Garanție pentru toate lucrările",
+                "services.label": "Serviciile noastre",
+                "services.title": "Ce reparăm",
+                "services.subtitle": "Gamă completă de lucrări: de la baterii la reparații caroserie",
+                "services.s1_title": "Sisteme hibride",
+                "services.s1_desc": "Repararea bateriilor (Li-ion), Restaurarea modulelor, Repararea invertoarelor",
+                "services.s1_price": "Diagnoză",
+                "services.s1_long_desc": "Diagnosticare și reparare profesională a bateriilor de înaltă tensiune (VVB). Realizăm echilibrarea elementelor, înlocuirea modulelor defecte și restaurarea completă a capacității. Folosim echipamente specializate pentru testare sub sarcină.",
+                "services.s2_title": "Motor și mecanică",
+                "services.s2_desc": "Reparație capitală motor, eliminarea defecțiunilor complexe, repararea suspensiei",
+                "services.s2_price": "Mecanică",
+                "services.s2_long_desc": "Gamă completă de lucrări mecanice. De la întreținerea planificată și schimbul de ulei până la reparația capitală a motorului și întreținerea suspensiei. Garantăm calitatea asamblării și utilizarea pieselor verificate.",
+                "services.s3_title": "Electronică și tuning",
+                "services.s3_desc": "Blocuri ABS, Chip-tuning, Programare EGR OFF / DPF",
+                "services.s3_price": "Electronică",
+                "services.s3_long_desc": "Diagnosticare profundă a unităților de control electronic. Repararea sistemelor ABS/VSC, programarea modulelor, eliminarea software a EGR și a filtrelor de particule (DPF), precum și chip-tuning pentru optimizarea sistemului hibrid.",
+                "services.s4_title": "Sistem de evacuare",
+                "services.s4_desc": "Înlocuire catalizator, soluționarea problemelor de ecologie, dezactivare software EGR/DPF.",
+                "services.s4_price": "Ecologie",
+                "services.s4_long_desc": "Întreținerea și tuning-ul sistemelor de evacuare. Înlocuirea catalizatoarelor, instalarea emulatoarelor, sudură cu argon și eliminarea mirosurilor neplăcute sau a zgomotului excesiv.",
+                "services.s5_title": "Lucrări caroserie",
+                "services.s5_desc": "Reparații de orice complexitate, vopsire de calitate și restaurare după accident.",
+                "services.s5_price": "Vopsire",
+                "services.s5_long_desc": "Restaurarea geometriei caroseriei pe bancul de deformații, îndreptare, vopsire profesională în cameră și lustruire. Acceptăm daune de orice complexitate, de la zgârieturi mici până la consecințele accidentelor grave.",
+                "services.s6_title": "Motociclete",
+                "services.s6_desc": "Reparații profesionale și întreținere tehnică pentru motociclete de toate mărcile.",
+                "services.s6_price": "Moto",
+                "services.s6_long_desc": "Întreținere tehnică și reparații complexe pentru toate clasele de motociclete. Repararea motoarelor, reglarea carburatoarelor/injectoarelor, pregătirea pentru sezon și instalarea echipamentelor suplimentare.",
+                "services.s7_title": "Verificare pre-vânzare",
+                "services.s7_desc": "Diagnoză completă înainte de cumpărare.",
+                "services.s7_price": "Verificare",
+                "services.s7_long_desc": "Verificarea completă a mașinii înainte de cumpărare: scanarea tuturor modulelor, verificarea stării bateriei hibride, inspecția suspensiei și a caroseriei pentru daune ascunse. Primiți un raport complet despre starea reală.",
+                "services.s8_title": "Geometrie roti",
+                "services.s8_desc": "Reglarea unghiurilor de aliniere a roților.",
+                "services.s8_price": "Suspensie",
+                "services.s8_long_desc": "Reglarea precisă a unghiurilor de cădere și de fugă pe un stand modern. Acest lucru asigură stabilitatea mașinii pe drum, uzura uniformă a anvelopelor și funcționarea corectă a sistemelor de stabilitate.",
+                "services.s9_title": "Sistem de răcire",
+                "services.s9_desc": "Întreținerea circuitelor de răcire ale motorului și invertorului.",
+                "services.s9_price": "Răcire",
+                "services.s9_long_desc": "Serviciu critic pentru hibride. Spălarea radiatoarelor, schimbarea antigelul în ambele circuite (motor și sistem hibrid), verificarea pompei. Preveniți supraîncălzirea invertorului costisitor.",
+                "services.s10_title": "Cutie de viteze",
+                "services.s10_desc": "Repararea și întreținerea transmisiei.",
+                "services.s10_price": "Transmisie",
+                "services.s10_long_desc": "Diagnosticarea și repararea cutiilor de viteze. Verificarea angrenajelor planetare ale hibrizilor, schimbarea uleiului în transmisie, eliminarea scurgerilor și a zgomotelor străine.",
+                "services.s11_title": "Schimb de ulei și revizie",
+                "services.s11_desc": "Întreținere tehnică planificată.",
+                "services.s11_price": "Revizie",
+                "services.s11_long_desc": "Întreținere regulată: schimbul uleiului de motor, al tuturor filtrelor, al bujiilor și verificarea lichidelor tehnice. Folosim uleiuri recomandate de producătorii de hibride.",
+                "services.s12_title": "Aer condiționat",
+                "services.s12_desc": "Încărcare și curățare sistem climatizare.",
+                "services.s12_price": "Climatizare",
+                "services.s12_long_desc": "Întreținerea sistemelor de climatizare. Încărcare cu freon folosind uleiuri pentru compresoare electrice, curățarea antibacteriană a vaporizatorului și schimbarea filtrului de habitaclu.",
+                "advantages.label": "Erori și probleme",
+                "advantages.title": "Cu ce vă ajutăm",
+                "advantages.subtitle": "Dacă aveți unul dintre aceste simptome — veniți la diagnoză",
+                "advantages.a1_title": "Eroare baterie",
+                "advantages.a1_desc": "Hibridul nu are putere sau funcționează instabil, eroarea sistemului hibrid este aprinsă.",
+                "advantages.a2_title": "Probleme invertor",
+                "advantages.a2_desc": "Mașina intră în mod de avarie, Ready nu se aprinde sau se aud sunete neobișnuite.",
+                "advantages.a3_title": "Diagnoză complexă",
+                "advantages.a3_desc": "Alte service-uri nu pot găsi cauza sau propun înlocuirea tuturor pieselor.",
+                "advantages.a4_title": "Defecțiuni mecanice",
+                "advantages.a4_desc": "Motor, suspensie, sistem de frânare, zgomote neobișnuite în timpul condusului.",
+                "location.label": "Locație",
+                "location.title": "Chișinău, str. Grenoble 7",
+                "process.label": "Cum lucrăm",
+                "process.title": "5 pași către o mașină funcțională",
+                "process.subtitle": "Proces transparent de la recepție la livrare",
+                "process.step1_title": "1. Diagnoza automobilului",
+                "process.step1_desc": "Verificăm minuțios toate sistemele și identificăm cauza reală a problemei.",
+                "process.step2_title": "2. Identificarea cauzei",
+                "process.step2_desc": "Găsim rădăcina problemei pentru a o elimina definitiv, nu doar pentru a reseta eroarea.",
+                "process.step3_title": "3. Coordonarea costurilor",
+                "process.step3_desc": "Evaluare onestă a reparației și a pieselor înainte de începerea oricărei lucrări.",
+                "process.step4_title": "4. Reparația",
+                "process.step4_desc": "Restaurare profesională a unităților folosind piese verificate.",
+                "process.step5_title": "5. Verificare și livrare",
+                "process.step5_desc": "Testare finală și predarea mașinii funcționale către proprietar.",
+                "brands.title": "Specializați în hibride și sisteme complexe",
+                "gallery.label": "ToyTech în detalii",
+                "gallery.title": "Abordarea noastră",
+                "gallery.subtitle": "Nu ghicim — determinăm exact defecțiunea",
+                "gallery.i1_title": "Reparații Baterii VVB",
+                "gallery.i1_desc": "Restaurarea elementelor bateriilor de înaltă tensiune",
+                "gallery.i2_title": "Invertoare",
+                "gallery.i2_desc": "Reparații complexe ale electronicii invertoarelor",
+                "gallery.i3_title": "Diagnoză",
+                "gallery.i3_desc": "Echipamente de dealer pentru toate mărcile",
+                "about.badge": "10+ ani experiență",
+                "about.title": "Diagnoză precisă și <span>soluționarea problemei</span>",
+                "about.desc": "Găsim cauza defecțiunii și o eliminăm, nu doar mascăm simptomele.<br><br>Obțineți:<br>— o înțelegere precisă a problemei<br>— o evaluare onestă a reparației<br>— soluție fără cheltuieli inutile",
+                "about.f1": "10+ ani experiență",
+                "about.f2": "Piese originale",
+                "about.f3": "Cazuri complexe",
+                "about.f4": "Ciclu complet de lucrări",
+                "about.f5": "Reparații oneste",
+                "about.f6": "Ciclu complet",
+                "reviews.label": "Recenzii",
+                "reviews.title": "Ce spun clienții ToyTech",
+                "reviews.subtitle": "Sute de hibride reparate și proprietari mulțumiți",
+                "reviews.r1_text": "\"Problema cu bateria la Prius a fost rezolvată în două zile. În alte locuri mi-au propus pur și simplu înlocuirea întregii baterii, aici au restaurat elementele. Mulțumesc mult!\"",
+                "reviews.r1_author": "Alexei S.",
+                "reviews.r1_car": "Toyota Prius 30",
+                "reviews.r2_text": "\"Am fost în trecere prin Chișinău și am avut o problemă cu suspensia. Băieții nu numai că au rezolvat totul rapid, dar mi-au și explicat în detaliu ce s-a întâmplat. Recomand tuturor!\"",
+                "reviews.r2_author": "Maxim V.",
+                "reviews.r2_car": "Turist",
+                "reviews.r3_text": "\"Vin aici pentru revizia planificată și diagnoză. Întotdeauna spun sincer ce trebuie făcut și ce mai poate aștepta. Recomand tuturor posesorilor de hibride.\"",
+                "reviews.r3_author": "Elena M.",
+                "reviews.r3_car": "Toyota Rav4 Hybrid",
+                "faq.title": "Întrebări și răspunsuri",
+                "faq.subtitle": "Tot ce trebuie să știți înainte de vizită",
+                "faq.q1": "Cât costă diagnoza?",
+                "faq.a1": "Costul depinde de complexitatea problemei și de tipul sistemelor care trebuie verificate. Prețul exact se clarifică după inspecția inițială.",
+                "faq.q2": "Cât durează reparația?",
+                "faq.a2": "Reparația poate dura de la câteva ore (pentru defecțiuni tipice) până la câteva zile (pentru restaurarea complexă a bateriilor sau invertoarelor).",
+                "faq.q3": "Există garanție?",
+                "faq.a3": "Da, oferim garanție pentru toate lucrările efectuate și pentru piesele de schimb instalate de noi.",
+                "form.label": "Diagnoză",
+                "form.title": "Programare diagnoză",
+                "form.subtitle": "Lăsați o cerere — vă vom contacta și vom alege o oră convenabilă.",
+                "form.benefit1": "Diagnostic precis",
+                "form.benefit2": "Preț corect",
+                "form.benefit3": "Meșteri certificați",
+                "form.name": "Numele dvs.",
+                "form.phone": "Telefon",
+                "form.car": "Marca și modelul auto",
+                "form.phone": "Telefon",
+                "form.car": "Marca și modelul auto",
+                "form.service": "Tipul serviciului",
+                "form.submit": "Programează diagnoză",
+                "form.select_service": "Selectați tipul serviciului",
+                "form.date": "Data dorită",
+                "form.success_title": "Cererea a fost trimisă!",
+                "form.success_text": "Vă vom contacta în scurt timp pentru a confirma detaliile.",
+                "form.back": "Înapoi",
+                "cta.title": "Programați o diagnoză",
+                "cta.subtitle": "Lăsați o cerere — vă vom contacta și vom alege o oră convenabilă",
+                "cta.btn_call": "Suna acum",
+                "cta.btn_book": "Programare",
+                "about.since": "Peste 10 ani",
+                "about.call_btn": "+373 68 771 547",
+                "about.desc": "Am început ca un mic atelier în 2014 și am crescut într-unul dintre cele mai de încredere service-uri auto din Chișinău. Scopul nostru este simplu: să facem reparații de calitate la un preț corect.",
+                "faq.label": "FAQ",
+                "faq.q4": "Reparați hibrizi Toyota?",
+                "faq.a4": "Da, suntem specializați în hibrizi Toyota și Lexus, inclusiv Prius, Camry, RAV4 și întreaga gamă de modele hibride.",
+                "faq.q5": "Unde vă aflați?",
+                "faq.a5": "Service-ul nostru este situat la adresa: Chișinău, str. Grenoble 7. Vă așteptăm!",
+                "footer.services": "Servicii",
+                "footer.company": "ToyTech",
+                "footer.contacts": "Contacte",
+                "footer.mon-fri": "Lun-Vin",
+                "footer.sat": "Sâm",
+                "footer.copyright": "Toate drepturile rezervate.",
+                "footer.s1": "Sisteme hibride",
+                "footer.s2": "Motor și suspensie",
+                "footer.s3": "Electronică",
+                "footer.s4": "Sistem de evacuare",
+                "footer.s5": "Lucrări caroserie",
+                "footer.c1": "Despre noi",
+                "footer.c2": "Recenzii",
+                "footer.c3": "FAQ",
+                "footer.c4": "Avantaje",
+                "footer.brand_text": "Service specializat în repararea mașinilor hibride și a sistemelor complexe în Chișinău. Peste 10 ani de experiență.",
+                "services.btn_more": "Încarcă mai multe servicii",
+                "services.s7_title": "Verificare pre-vânzare",
+                "services.s7_desc": "Diagnoză completă înainte de cumpărare.",
+                "services.s7_price": "Verificare",
+                "services.s7_long_desc": "Verificarea completă a mașinii înainte de cumpărare: scanarea tuturor modulelor, verificarea stării bateriei hibride, inspecția suspensiei și a caroseriei pentru daune ascunse. Primiți un raport complet despre starea reală.",
+                "services.s8_title": "Geometrie roti",
+                "services.s8_desc": "Reglarea unghiurilor de aliniere a roților.",
+                "services.s8_price": "Suspensie",
+                "services.s8_long_desc": "Reglarea precisă a unghiurilor de cădere și de fugă pe un stand modern. Acest lucru asigură stabilitatea mașinii pe drum, uzura uniformă a anvelopelor și funcționarea corectă a sistemelor de stabilitate.",
+                "services.s9_title": "Sistem de răcire",
+                "services.s9_desc": "Întreținerea circuitelor de răcire ale motorului și invertorului.",
+                "services.s9_price": "Răcire",
+                "services.s9_long_desc": "Serviciu critic pentru hibride. Spălarea radiatoarelor, schimbarea antigelul în ambele circuite (motor și sistem hibrid), verificarea pompei. Preveniți supraîncălzirea invertorului costisitor.",
+                "services.s10_title": "Cutie de viteze",
+                "services.s10_desc": "Repararea și întreținerea transmisiei.",
+                "services.s10_price": "Transmisie",
+                "services.s10_long_desc": "Diagnosticarea și repararea cutiilor de viteze. Verificarea angrenajelor planetare ale hibrizilor, schimbarea uleiului în transmisie, eliminarea scurgerilor și a zgomotelor străine.",
+                "services.s11_title": "Schimb de ulei și revizie",
+                "services.s11_desc": "Întreținere tehnică planificată.",
+                "services.s11_price": "Revizie",
+                "services.s11_long_desc": "Întreținere regulată: schimbul uleiului de motor, al tuturor filtrelor, al bujiilor și verificarea lichidelor tehnice. Folosim uleiuri recomandate de producătorii de hibride.",
+                "services.s12_title": "Aer condiționat",
+                "services.s12_desc": "Încărcare și curățare sistem climatizare.",
+                "services.s12_price": "Climatizare",
+                "services.s12_long_desc": "Întreținerea sistemelor de climatizare. Încărcare cu freon folosind uleiuri pentru compresoare electrice, curățarea antibacteriană a vaporizatorului și schimbarea filtrului de habitaclu.",
+                "modal.book_btn": "Programare service"
+            },
+            en: {
+                "head.title": "Hybrid Car Repair in Chisinau — ToyTech",
+                "head.description": "Diagnostics and repair of batteries, inverters, and high-voltage systems in Chisinau. 10+ years of experience. We handle complex cases.",
+                "nav.services": "Services",
+                "nav.advantages": "Problems",
+                "nav.about": "About Us",
+                "nav.reviews": "Reviews",
+                "nav.faq": "FAQ",
+                "nav.call": "Call Now",
+                "nav.book": "Book Now",
+                "hero.title": "Hybrid Car Repair <span class=\"accent\">in Chisinau</span>",
+                "hero.subtitle": "Diagnostics and repair of batteries, inverters, and high-voltage systems. We handle complex cases where other services failed.",
+                "hero.cta_book": "Book Diagnostics",
+                "hero.cta_call": "Call Now",
+                "hero.stat_experience": "Years of experience",
+                "hero.stat_repairs": "Cars repaired",
+                "hero.stat_diagnosis": "Accurate diagnostics",
+                "hero.badge": "ToyTech Hybrid Specialist",
+                "hero.price": "10+ years",
+                "hero.price_text": "Warranty on all work",
+                "services.label": "Our Services",
+                "services.title": "What We Repair",
+                "services.subtitle": "Full range of work: from batteries to body repair",
+                "services.s1_title": "Hybrid Systems",
+                "services.s1_desc": "Battery repair (Li-ion), Module restoration, Inverter repair",
+                "services.s1_price": "Diagnostics",
+                "services.s1_long_desc": "Professional diagnostics and repair of high-voltage batteries (HV). We perform cell balancing, replacement of faulty modules, and full capacity restoration. We use specialized equipment for load testing.",
+                "services.s2_title": "Engine & Mechanics",
+                "services.s2_desc": "Engine overhaul, complex troubleshooting, suspension repair",
+                "services.s2_price": "Mechanics",
+                "services.s2_long_desc": "Full range of mechanical work for your vehicle. From planned maintenance and oil changes to engine overhauls and suspension servicing. We guarantee high-quality assembly and the use of proven parts.",
+                "services.s3_title": "Electronics & Tuning",
+                "services.s3_desc": "ABS blocks, Chip-tuning, EGR OFF / DPF programming",
+                "services.s3_price": "Electronics",
+                "services.s3_long_desc": "Deep diagnostics of electronic control units. Repair of ABS/VSC systems, unit flashing, software removal of EGR and particulate filters (DPF), as well as chip-tuning to optimize hybrid system performance.",
+                "services.s4_title": "Exhaust System",
+                "services.s4_desc": "Catalyst replacement, ecology problem solving, software disabling of EGR/DPF.",
+                "services.s4_price": "Ecology",
+                "services.s4_long_desc": "Maintenance and tuning of exhaust systems. Replacement of catalysts, installation of spacers, argon welding, and elimination of unpleasant odors or excessive noise.",
+                "services.s5_title": "Body Work",
+                "services.s5_desc": "Straightening of any complexity, high-quality painting and restoration after accidents.",
+                "services.s5_price": "Painting",
+                "services.s5_long_desc": "Restoration of body geometry on a frame machine, straightening, professional booth painting, and polishing. We handle damage of any complexity, from minor scratches to serious accident consequences.",
+                "services.s6_title": "Motorcycles",
+                "services.s6_desc": "Professional repair and technical maintenance of motorcycles of all brands.",
+                "services.s6_price": "Moto",
+                "services.s6_long_desc": "Technical maintenance and complex repair of motorcycles of all classes. Engine repairs, carburetor/injector tuning, seasonal preparation, and installation of additional equipment.",
+                "services.s7_title": "Pre-purchase Inspection",
+                "services.s7_desc": "Full vehicle diagnostics before purchase.",
+                "services.s7_price": "Inspection",
+                "services.s7_long_desc": "Comprehensive vehicle check before purchase: scanning all units, checking HV battery status, inspecting suspension and body for hidden damage. Get a full report on the car's actual condition.",
+                "services.s8_title": "Wheel Alignment",
+                "services.s8_desc": "Adjustment of wheel installation angles.",
+                "services.s8_price": "Suspension",
+                "services.s8_long_desc": "High-precision adjustment of wheel alignment on a modern stand. This ensures vehicle stability on the road, even tire wear, and correct operation of stabilization systems.",
+                "services.s9_title": "Cooling System",
+                "services.s9_desc": "Maintenance of engine and inverter cooling circuits.",
+                "services.s9_price": "Cooling",
+                "services.s9_long_desc": "Critically important service for hybrids. Radiator flushing, coolant replacement in both circuits (engine and hybrid system), pump check. Prevent overheating of the expensive inverter.",
+                "services.s10_title": "Transmission & Gearbox",
+                "services.s10_desc": "Repair and maintenance of the transmission.",
+                "services.s10_price": "Gearbox",
+                "services.s10_long_desc": "Diagnostics and repair of gearboxes. Checking planetary gears of hybrids, changing transmission oil, eliminating leaks and unusual noises.",
+                "services.s11_title": "Oil Change & Maintenance",
+                "services.s11_desc": "Planned technical maintenance.",
+                "services.s11_price": "Maintenance",
+                "services.s11_long_desc": "Regular maintenance: engine oil change, all filters, spark plugs, and technical liquid checks. We use oils recommended by hybrid manufacturers.",
+                "services.s12_title": "Air Conditioning",
+                "services.s12_desc": "Recharging and cleaning the climate system.",
+                "services.s12_price": "Climate",
+                "services.s12_long_desc": "Maintenance of air conditioning systems. Freon recharging using oils for electric compressors, antibacterial cleaning of the evaporator, and cabin filter replacement.",
+                "advantages.label": "Errors & Problems",
+                "advantages.title": "How We Help",
+                "advantages.subtitle": "If you have any of these symptoms — come for diagnostics",
+                "advantages.a1_title": "Battery Error",
+                "advantages.a1_desc": "Hybrid lacks power or works unclearly, hybrid system error is on.",
+                "advantages.a2_title": "Inverter Problems",
+                "advantages.a2_desc": "Car goes into emergency mode, Ready doesn't turn on or strange sounds are heard.",
+                "advantages.a3_title": "Complex Diagnostics",
+                "advantages.a3_desc": "Other services can't find the cause or suggest replacing everything.",
+                "advantages.a4_title": "Mechanical Failures",
+                "advantages.a4_desc": "Engine, suspension, braking system, unusual noises while driving.",
+                "location.label": "Location",
+                "location.title": "Chisinau, Grenoble 7 str.",
+                "process.label": "How We Work",
+                "process.title": "5 Steps to a Working Car",
+                "process.subtitle": "Transparent process from reception to delivery",
+                "process.step1_title": "1. Car Diagnostics",
+                "process.step1_desc": "Thoroughly check all systems and identify the actual cause of the problem.",
+                "process.step2_title": "2. Identifying the Cause",
+                "process.step2_desc": "Find the root of the problem to eliminate it forever, not just reset the error.",
+                "process.step3_title": "3. Price Agreement",
+                "process.step3_desc": "Honest estimation of repair and parts before starting any work.",
+                "process.step4_title": "4. Repair",
+                "process.step4_desc": "Professional restoration of units using proven parts.",
+                "process.step5_title": "5. Check & Delivery",
+                "process.step5_desc": "Final testing and handing over the working car to the owner.",
+                "brands.title": "Specialized in Hybrids and Complex Systems",
+                "gallery.label": "ToyTech in Details",
+                "gallery.title": "Our Approach",
+                "gallery.subtitle": "We don't guess — we accurately determine the malfunction",
+                "gallery.i1_title": "HV Battery Repair",
+                "gallery.i1_desc": "Restoration of high-voltage battery cells",
+                "gallery.i2_title": "Inverters",
+                "gallery.i2_desc": "Complex repair of inverter electronics",
+                "gallery.i3_title": "Diagnostics",
+                "gallery.i3_desc": "Dealer equipment for all brands",
+                "about.badge": "10+ years experience",
+                "about.title": "Accurate Diagnostics and <span>Problem Solving</span>",
+                "about.desc": "We find the cause of the malfunction and eliminate it, not just mask the symptoms.<br><br>You get:<br>— accurate understanding of the problem<br>— honest repair estimation<br>— solution without unnecessary costs",
+                "about.f1": "10+ years experience",
+                "about.f2": "Original spare parts",
+                "about.f3": "Complex cases",
+                "about.f4": "Full cycle of work",
+                "about.f5": "Honest repair",
+                "about.f6": "Full cycle",
+                "reviews.label": "Reviews",
+                "reviews.title": "What ToyTech Clients Say",
+                "reviews.subtitle": "Hundreds of repaired hybrids and satisfied owners",
+                "reviews.r1_text": "\"Battery problem on Prius solved in two days. At other places they suggested just replacing the whole battery, here they restored the elements. Many thanks!\"",
+                "reviews.r1_author": "Alexey S.",
+                "reviews.r1_car": "Toyota Prius 30",
+                "reviews.r2_text": "\"I was passing through Chisinau and had a problem with the suspension. The guys not only fixed everything quickly but also explained in detail what happened. Highly recommend to everyone!\"",
+                "reviews.r2_author": "Maxim V.",
+                "reviews.r2_car": "Tourist",
+                "reviews.r3_text": "\"I come here for planned maintenance and diagnostics. They always honestly say what needs to be done and what can wait. Highly recommend to all hybrid owners.\"",
+                "reviews.r3_author": "Elena M.",
+                "reviews.r3_car": "Toyota Rav4 Hybrid",
+                "faq.title": "Questions & Answers",
+                "faq.subtitle": "Everything you need to know before visiting",
+                "faq.q1": "How much does diagnostics cost?",
+                "faq.a1": "The cost depends on the complexity of the problem and the type of systems that need to be checked. Accurate price is clarified after initial inspection.",
+                "faq.q2": "How long does repair take?",
+                "faq.a2": "Repair can take from a few hours (for typical malfunctions) to a few days (for complex restoration of batteries or inverters).",
+                "faq.q3": "Is there a warranty?",
+                "faq.a3": "Yes, we provide a warranty for all performed work and for the spare parts installed by us.",
+                "form.label": "Diagnostics",
+                "form.title": "Book Diagnostics",
+                "form.subtitle": "Leave a request — we will contact you and choose a convenient time.",
+                "form.benefit1": "Accurate diagnosis",
+                "form.benefit2": "Honest price",
+                "form.benefit3": "Certified masters",
+                "form.name": "Your name",
+                "form.phone": "Phone",
+                "form.car": "Car make and model",
+                "form.phone": "Phone",
+                "form.car": "Car make and model",
+                "form.service": "Service type",
+                "form.submit": "Book Diagnostics",
+                "form.select_service": "Select service type",
+                "form.date": "Desired date",
+                "form.success_title": "Request sent!",
+                "form.success_text": "We will contact you shortly to confirm the details.",
+                "form.back": "Back",
+                "cta.title": "Book a Diagnostics",
+                "cta.subtitle": "Leave a request — we will contact you and choose a convenient time",
+                "cta.btn_call": "Call Now",
+                "cta.btn_book": "Book Now",
+                "about.since": "More than 10 years",
+                "about.call_btn": "+373 68 771 547",
+                "about.desc": "We started as a small workshop in 2014 and grew into one of the most reliable car services in Chisinau. Our goal is simple: to provide quality repair at a fair price.",
+                "faq.label": "FAQ",
+                "faq.q4": "Do you work with Toyota hybrids?",
+                "faq.a4": "Yes, we specialize in Toyota and Lexus hybrids, including Prius, Camry, RAV4 and the entire line of hybrid models.",
+                "faq.q5": "Where are you located?",
+                "faq.a5": "Our service is located at: Chisinau, Grenoble 7 str. Waiting for you!",
+                "footer.services": "Services",
+                "footer.company": "ToyTech",
+                "footer.contacts": "Contacts",
+                "footer.mon-fri": "Mon-Fri",
+                "footer.sat": "Sat",
+                "footer.copyright": "All rights reserved.",
+                "footer.s1": "Hybrid systems",
+                "footer.s2": "Engine & suspension",
+                "footer.s3": "Electronics",
+                "footer.s4": "Exhaust system",
+                "footer.s5": "Body repair",
+                "footer.c1": "About us",
+                "footer.c2": "Reviews",
+                "footer.c3": "FAQ",
+                "footer.c4": "Advantages",
+                "footer.brand_text": "Specialized service for hybrid car repair and complex systems in Chisinau. More than 10 years of experience.",
+                "services.btn_more": "Load more services",
+                "services.s7_title": "Pre-purchase Inspection",
+                "services.s7_desc": "Full vehicle diagnostics before purchase.",
+                "services.s7_price": "Inspection",
+                "services.s7_long_desc": "Comprehensive vehicle check before purchase: scanning all units, checking HV battery status, inspecting suspension and body for hidden damage. Get a full report on the car's actual condition.",
+                "services.s8_title": "Wheel Alignment",
+                "services.s8_desc": "Adjustment of wheel installation angles.",
+                "services.s8_price": "Suspension",
+                "services.s8_long_desc": "High-precision adjustment of wheel alignment on a modern stand. This ensures vehicle stability on the road, even tire wear, and correct operation of stabilization systems.",
+                "services.s9_title": "Cooling System",
+                "services.s9_desc": "Maintenance of engine and inverter cooling circuits.",
+                "services.s9_price": "Cooling",
+                "services.s9_long_desc": "Critically important service for hybrids. Radiator flushing, coolant replacement in both circuits (engine and hybrid system), pump check. Prevent overheating of the expensive inverter.",
+                "services.s10_title": "Transmission & Gearbox",
+                "services.s10_desc": "Repair and maintenance of the transmission.",
+                "services.s10_price": "Gearbox",
+                "services.s10_long_desc": "Diagnostics and repair of gearboxes. Checking planetary gears of hybrids, changing transmission oil, eliminating leaks and unusual noises.",
+                "services.s11_title": "Oil Change & Maintenance",
+                "services.s11_desc": "Planned technical maintenance.",
+                "services.s11_price": "Maintenance",
+                "services.s11_long_desc": "Regular maintenance: engine oil change, all filters, spark plugs, and technical liquid checks. We use oils recommended by hybrid manufacturers.",
+                "services.s12_title": "Air Conditioning",
+                "services.s12_desc": "Recharging and cleaning the climate system.",
+                "services.s12_price": "Climate",
+                "services.s12_long_desc": "Maintenance of air conditioning systems. Freon recharging using oils for electric compressors, antibacterial cleaning of the evaporator, and cabin filter replacement.",
+                "modal.book_btn": "Book Service"
+            }
+        };
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Language switching logic
+        let currentLanguage = 'ro'; // Always open in Romanian
+
+        function toggleLangDropdown() {
+            document.getElementById('langSwitcher').classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!document.getElementById('langSwitcher').contains(e.target)) {
+                document.getElementById('langSwitcher').classList.remove('active');
+            }
+        });
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('selectedLanguage', lang);
+            updateContent();
+
+            // Update dropdown UI
+            const flags = {
+                ru: 'https://flagcdn.com/ru.svg',
+                ro: 'https://flagcdn.com/ro.svg',
+                en: 'https://flagcdn.com/gb.svg'
+            };
+
+            document.getElementById('currentLangFlag').src = flags[lang];
+            document.getElementById('currentLangText').innerText = lang.toUpperCase();
+
+            // Update active state in dropdown
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${lang}'`));
+            });
+
+            // Update mobile active state
+            document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.id === `m-lang-${lang}`);
+            });
+
+            // Re-create icons to handle changed titles/alt
+            lucide.createIcons();
+        }
+
+        function updateContent() {
+            const langData = translations[currentLanguage];
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (langData[key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = langData[key];
+                    } else if (el.tagName === 'META') {
+                        el.setAttribute('content', langData[key]);
+                    } else if (el.tagName === 'TITLE') {
+                        document.title = langData[key];
+                    } else if (el.tagName === 'SELECT') {
+                        // handled via options
+                    } else {
+                        el.innerHTML = langData[key];
+                    }
+                }
+            });
+
+            // Special handling for placeholders (if not caught)
+            if (langData['form.name']) document.getElementById('name').placeholder = langData['form.name'];
+            if (langData['form.phone']) document.getElementById('phone').placeholder = langData['form.phone'];
+            if (langData['form.car']) document.getElementById('car').placeholder = langData['form.car'];
+        }
+
+        // Form handling
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = '<i data-lucide="loader-2" class="spin"></i>';
+            lucide.createIcons();
+
+            // Simulate API call
+            setTimeout(() => {
+                document.getElementById('appointmentForm').style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+            }, 1500);
+        }
+
+        function resetForm() {
+            document.getElementById('appointmentForm').style.display = 'block';
+            document.getElementById('formSuccess').style.display = 'none';
+            document.getElementById('appointmentForm').reset();
+        }
+
+        // Run on load
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLanguage(currentLanguage);
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // FAQ toggle
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Scroll animations with IntersectionObserver
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background on scroll
+        const nav = document.querySelector('.nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.9)';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        function populateFormServices() {
+            const serviceSelect = document.getElementById('service');
+            if (!serviceSelect) return;
+
+            const langData = translations[currentLanguage];
+            const currentValue = serviceSelect.value;
+            serviceSelect.innerHTML = '';
+
+            // Add default "Select service" option
+            const defaultOption = document.createElement('option');
+            defaultOption.value = "";
+            defaultOption.disabled = true;
+            if (!currentValue) defaultOption.selected = true;
+            defaultOption.innerText = langData['form.select_service'] || (currentLanguage === 'ru' ? 'Выберите услугу' : (currentLanguage === 'ro' ? 'Selectați serviciul' : 'Select service'));
+            serviceSelect.appendChild(defaultOption);
+
+            // Collect all services from translations (s1 to s12)
+            for (let i = 1; i <= 12; i++) {
+                const titleKey = `services.s${i}_title`;
+                if (langData[titleKey]) {
+                    const option = document.createElement('option');
+                    option.value = `s${i}`;
+                    option.innerText = langData[titleKey];
+                    if (currentValue === `s${i}`) option.selected = true;
+                    serviceSelect.appendChild(option);
+                }
+            }
+        }
+
+        function openServiceModal(serviceKey) {
+            const langData = translations[currentLanguage];
+            const title = langData[`services.${serviceKey}_title`];
+            const desc = langData[`services.${serviceKey}_long_desc`] || langData[`services.${serviceKey}_desc`];
+
+            // Get icon from the card
+            const originalCard = document.querySelector(`.service-card[onclick*="'${serviceKey}'"]`);
+            const iconHtml = originalCard ? originalCard.querySelector('.service-icon').innerHTML : '';
+
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerHTML = desc;
+            document.getElementById('modalIcon').innerHTML = iconHtml;
+
+            // Set current service for booking
+            window.currentModalServiceId = serviceKey;
+
+            document.getElementById('serviceModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function bookFromModal() {
+            const serviceId = window.currentModalServiceId;
+            closeServiceModal();
+
+            const appointmentSection = document.getElementById('appointment');
+            if (appointmentSection) {
+                appointmentSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Pre-select service in form
+                setTimeout(() => {
+                    const serviceSelect = document.getElementById('service');
+                    if (serviceSelect && serviceId) {
+                        serviceSelect.value = serviceId;
+                    }
+                }, 500);
+            }
+        }
+
+        // Services expand/collapse
+        let servicesExpanded = false;
+        function toggleServices() {
+            const extra = document.getElementById('servicesExtra');
+            const icon = document.getElementById('servicesToggleIcon');
+            const text = document.getElementById('servicesToggleText');
+
+            servicesExpanded = !servicesExpanded;
+
+            if (servicesExpanded) {
+                extra.classList.add('expanded');
+                icon.style.transform = 'rotate(180deg)';
+                text.textContent = 'Скрыть';
+            } else {
+                extra.classList.remove('expanded');
+                icon.style.transform = 'rotate(0deg)';
+                text.textContent = 'Загрузить ещё услуги';
+            }
+        }
+
+        // ── ADMIN DATA SYNC ──
+        // Reads data saved in admin.html (localStorage) and applies it to the page
+        function applyAdminData() {
+
+            // 1. TEXTS
+            try {
+                const texts = JSON.parse(localStorage.getItem('tt_texts') || '{}');
+                const map = {
+                    'hero_title': '[data-t="hero.title"]',
+                    'hero_subtitle': '[data-t="hero.subtitle"]',
+                    'hero_btn': '[data-t="hero.cta_book"]',
+                    'services_title': '[data-t="services.title"]',
+                    'services_subtitle': '[data-t="services.subtitle"]',
+                    'about_title': '[data-t="about.title"]',
+                    'about_desc': '[data-t="about.desc"]',
+                    'cta_title': '[data-t="cta.title"]',
+                    'cta_subtitle': '[data-t="cta.subtitle"]',
+                };
+                Object.entries(texts).forEach(([key, value]) => {
+                    if (!value) return;
+                    const selector = map[key];
+                    if (selector) {
+                        document.querySelectorAll(selector).forEach(el => {
+                            el.textContent = value;
+                        });
+                    }
+                });
+            } catch (e) { }
+
+            // 2. CONTACTS
+            try {
+                const contacts = JSON.parse(localStorage.getItem('tt_contacts') || '{}');
+                if (contacts.phone) {
+                    document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+                        const num = contacts.phone.replace(/\s/g, '');
+                        a.href = 'tel:' + num;
+                    });
+                    document.querySelectorAll('[data-t="about.call_btn"]').forEach(el => { el.textContent = contacts.phone; });
+                    document.querySelectorAll('.nav-phone').forEach(el => { el.textContent = contacts.phone; });
+                    document.querySelectorAll('.footer-contact-item').forEach(el => {
+                        if (el.querySelector('[data-lucide="phone"]')) {
+                            const span = el.querySelector('span');
+                            if (span) span.textContent = contacts.phone;
+                        }
+                    });
+                }
+                if (contacts.address) {
+                    document.querySelectorAll('.footer-contact-item').forEach(el => {
+                        if (el.querySelector('[data-lucide="map-pin"]')) {
+                            const span = el.querySelector('span');
+                            if (span) span.textContent = contacts.address;
+                        }
+                    });
+                }
+                if (contacts.instagram) document.querySelectorAll('a[href*="instagram.com"]').forEach(a => { a.href = contacts.instagram; });
+                if (contacts.facebook) document.querySelectorAll('a[href*="facebook.com"]').forEach(a => { a.href = contacts.facebook; });
+                if (contacts.tiktok) document.querySelectorAll('a[href*="tiktok.com"]').forEach(a => { a.href = contacts.tiktok; });
+            } catch (e) { }
+
+            // 3. CUSTOM SERVICES
+            try {
+                const adminServices = JSON.parse(localStorage.getItem('tt_services') || '[]');
+                if (!adminServices.length) return;
+
+                const iconMap = {
+                    'battery-charging': '🔋', 'cog': '⚙️', 'zap': '⚡', 'wind': '💨', 'brush': '🖌', 'bike': '🏍',
+                    'wrench': '🔧', 'shield-check': '🛡', 'gauge': '🔘', 'thermometer': '🌡', 'box': '📦',
+                    'droplets': '💧', 'air-vent': '❄️', 'cpu': '💻', 'car': '🚗', 'tool': '🔧',
+                    'settings': '⚙️', 'check-circle': '✅', 'star': '⭐', 'trending-up': '📈', 'award': '🏆', 'rocket': '🚀'
+                };
+
+                // Build card HTML
+                function makeCard(svc, stagger) {
+                    return `<div class="service-card animate-on-scroll stagger-${stagger}" style="opacity:1">
+                        <div class="service-icon">
+                            <i data-lucide="${svc.icon}" style="width:28px;height:28px"></i>
+                        </div>
+                        <h3>${svc.name}</h3>
+                        <p>${svc.desc || ''}</p>
+                        <span class="service-price">${svc.badge || ''}</span>
+                    </div>`;
+                }
+
+                const mainSvcs = adminServices.filter(s => s.type === 'main');
+                const extraSvcs = adminServices.filter(s => s.type === 'extra');
+
+                // Append main services after existing grid
+                if (mainSvcs.length) {
+                    const grid = document.querySelector('#services .services-grid');
+                    if (grid) {
+                        mainSvcs.forEach((svc, i) => {
+                            grid.insertAdjacentHTML('beforeend', makeCard(svc, (i % 3) + 1));
+                        });
+                    }
+                }
+
+                // Append extra services to the extra grid
+                if (extraSvcs.length) {
+                    const extraGrid = document.querySelector('#servicesExtra .services-grid-extra');
+                    if (extraGrid) {
+                        extraSvcs.forEach((svc, i) => {
+                            extraGrid.insertAdjacentHTML('beforeend', makeCard(svc, (i % 3) + 1));
+                        });
+                        // Update badge count
+                        const countEl = document.querySelector('#servicesToggleBtn span[style*="background"]');
+                        if (countEl) {
+                            const total = (document.querySelectorAll('#servicesExtra .service-card').length);
+                            countEl.textContent = '+' + total;
+                        }
+                    }
+                }
+
+                // Re-init icons
+                if (window.lucide) lucide.createIcons();
+
+            } catch (e) { }
+        }
+
+        // Run on page load
+        applyAdminData();
+    </script>
+</body>
+
+</html>

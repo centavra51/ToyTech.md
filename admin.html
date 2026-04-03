@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToyTech Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --bg2: #111;
+            --card: #1A1A1A;
+            --border: #262626;
+            --red: #DC2626;
+            --red2: #B91C1C;
+            --text: #FFFFFF;
+            --muted: #A3A3A3;
+            --dim: #737373;
+            --green: #22C55E;
+            --yellow: #F59E0B;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* ── LOGIN ── */
+        .login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(220,38,38,0.12), transparent 70%), var(--bg);
+        }
+        .login-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+        }
+        .login-logo { font-size: 2rem; font-weight: 900; color: var(--red); margin-bottom: 0.25rem; }
+        .login-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+        .login-box input {
+            width: 100%;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem 1.25rem;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: inherit;
+            margin-bottom: 1rem;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .login-box input:focus { border-color: var(--red); }
+        .login-box button {
+            width: 100%;
+            background: var(--red);
+            color: #fff;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background .2s, transform .1s;
+        }
+        .login-box button:hover { background: var(--red2); }
+        .login-box button:active { transform: scale(0.98); }
+        .login-error { color: #f87171; font-size: 0.85rem; margin-top: 0.75rem; display: none; }
+
+        /* ── APP SHELL ── */
+        .app { display: none; min-height: 100vh; }
+        .sidebar {
+            position: fixed; top: 0; left: 0; bottom: 0;
+            width: 240px;
+            background: var(--card);
+            border-right: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            padding: 1.5rem 1rem;
+            z-index: 100;
+        }
+        .sidebar-logo { font-size: 1.5rem; font-weight: 900; color: var(--red); padding: 0 0.5rem; margin-bottom: 2rem; }
+        .sidebar-logo span { color: var(--muted); font-size: 0.75rem; font-weight: 500; display: block; }
+        .nav-item {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: var(--muted);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .2s;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+        .nav-item:hover { background: var(--bg2); color: var(--text); }
+        .nav-item.active { background: rgba(220,38,38,0.15); color: var(--red); }
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .logout-btn {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            color: var(--muted);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .2s;
+            font-size: 0.95rem;
+        }
+        .logout-btn:hover { color: #f87171; }
+        .main { margin-left: 240px; padding: 2.5rem; min-height: 100vh; }
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ── HEADER ── */
+        .page-header { margin-bottom: 2rem; }
+        .page-header h1 { font-size: 1.75rem; font-weight: 800; }
+        .page-header p { color: var(--muted); margin-top: 0.25rem; }
+
+        /* ── BUTTONS ── */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; border-radius: 0.6rem; font-size: 0.9rem; font-weight: 600; font-family: inherit; cursor: pointer; border: none; transition: all .2s; }
+        .btn-primary { background: var(--red); color: #fff; }
+        .btn-primary:hover { background: var(--red2); }
+        .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+        .btn-ghost:hover { color: var(--text); border-color: var(--dim); }
+        .btn-danger { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+        .btn-danger:hover { background: rgba(239,68,68,0.2); }
+        .btn-success { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+        .btn-success:hover { background: rgba(34,197,94,0.2); }
+
+        /* ── CARDS ── */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+        .card + .card { margin-top: 1rem; }
+
+        /* ── SERVICES PAGE ── */
+        .services-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .services-count { color: var(--muted); font-size: 0.9rem; }
+        .services-list { display: grid; gap: 1rem; }
+        .service-row {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: border-color .2s;
+        }
+        .service-row:hover { border-color: var(--dim); }
+        .service-row-icon {
+            width: 48px; height: 48px; border-radius: 0.75rem;
+            background: rgba(220,38,38,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--red); flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+        .service-row-info { flex: 1; min-width: 0; }
+        .service-row-info h3 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .service-row-info p { color: var(--muted); font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .service-row-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: rgba(220,38,38,0.1);
+            color: var(--red);
+            flex-shrink: 0;
+        }
+        .service-row-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 200;
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            width: 100%;
+            max-width: 540px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .modal-header h2 { font-size: 1.2rem; font-weight: 700; }
+        .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; padding: 0.25rem; border-radius: 0.5rem; }
+        .modal-close:hover { color: var(--text); }
+        .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; }
+
+        /* ── FORM ELEMENTS ── */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 0.85rem 1rem;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--red); }
+        .form-group textarea { resize: vertical; min-height: 90px; }
+        .form-group select option { background: var(--card); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        /* ── TEXTS PAGE ── */
+        .text-section { margin-bottom: 2rem; }
+        .text-section-title {
+            font-size: 0.75rem; font-weight: 700; color: var(--dim);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .text-field { margin-bottom: 1rem; }
+        .text-field-label { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; font-weight: 500; }
+        .text-field input {
+            width: 100%;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 0.6rem;
+            padding: 0.65rem 0.9rem;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .text-field input:focus { border-color: var(--red); }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed; bottom: 2rem; right: 2rem;
+            background: var(--green);
+            color: #fff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s ease;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* ── STATS ── */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem; }
+        .stat-card-num { font-size: 2rem; font-weight: 800; color: var(--red); }
+        .stat-card-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+
+        /* ── ICON PICKER ── */
+        .icon-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+        .icon-btn {
+            aspect-ratio: 1;
+            background: var(--bg2);
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all .2s; color: var(--muted);
+        }
+        .icon-btn:hover { border-color: var(--dim); color: var(--text); }
+        .icon-btn.selected { border-color: var(--red); color: var(--red); background: rgba(220,38,38,0.1); }
+
+        /* ── EMPTY STATE ── */
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+        .empty-state svg { opacity: 0.3; margin-bottom: 1rem; }
+        .empty-state h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text); }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; padding: 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-screen" id="loginScreen">
+    <div class="login-box">
+        <div class="login-logo">ToyTech</div>
+        <div class="login-sub">Панель управления контентом</div>
+        <input type="password" id="passwordInput" placeholder="Введите пароль" onkeydown="if(event.key==='Enter') login()">
+        <button onclick="login()">Войти</button>
+        <div class="login-error" id="loginError">Неверный пароль</div>
+    </div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">ToyTech <span>Admin Panel</span></div>
+        <nav>
+            <div class="nav-item active" onclick="showPage('dashboard')" id="nav-dashboard">
+                <i data-lucide="layout-dashboard" style="width:18px;height:18px"></i>
+                Дашборд
+            </div>
+            <div class="nav-item" onclick="showPage('services')" id="nav-services">
+                <i data-lucide="wrench" style="width:18px;height:18px"></i>
+                Услуги
+            </div>
+            <div class="nav-item" onclick="showPage('texts')" id="nav-texts">
+                <i data-lucide="type" style="width:18px;height:18px"></i>
+                Тексты
+            </div>
+            <div class="nav-item" onclick="showPage('contacts')" id="nav-contacts">
+                <i data-lucide="phone" style="width:18px;height:18px"></i>
+                Контакты
+            </div>
+            <div class="nav-item" onclick="showPage('settings')" id="nav-settings">
+                <i data-lucide="settings" style="width:18px;height:18px"></i>
+                Настройки
+            </div>
+        </nav>
+        <div id="sheetsStatus" style="margin:0.75rem 0.5rem 0; padding:0.5rem 0.75rem; border-radius:0.5rem; font-size:0.78rem; font-weight:600; display:none;"></div>
+        <div class="sidebar-footer">
+            <a href="index.html" target="_blank" class="nav-item" style="text-decoration:none; display:flex;">
+                <i data-lucide="external-link" style="width:18px;height:18px"></i>
+                Открыть сайт
+            </a>
+            <div class="logout-btn" onclick="logout()">
+                <i data-lucide="log-out" style="width:18px;height:18px"></i>
+                Выйти
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+        <!-- DASHBOARD -->
+        <div class="page active" id="page-dashboard">
+            <div class="page-header">
+                <h1>Добро пожаловать 👋</h1>
+                <p>Управляйте контентом вашего сайта ToyTech</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-num" id="stat-services">–</div>
+                    <div class="stat-card-label">Услуг на сайте</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-num" id="stat-texts">–</div>
+                    <div class="stat-card-label">Текстов изменено</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-num" style="color: var(--green);">Live</div>
+                    <div class="stat-card-label">Статус сайта</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3 style="margin-bottom:0.75rem">Быстрые действия</h3>
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="showPage('services'); openAddModal()">
+                        <i data-lucide="plus" style="width:16px;height:16px"></i>
+                        Добавить услугу
+                    </button>
+                    <button class="btn btn-ghost" onclick="showPage('texts')">
+                        <i data-lucide="pencil" style="width:16px;height:16px"></i>
+                        Редактировать тексты
+                    </button>
+                    <button class="btn btn-ghost" onclick="showPage('contacts')">
+                        <i data-lucide="map-pin" style="width:16px;height:16px"></i>
+                        Изменить контакты
+                    </button>
+                </div>
+            </div>
+            <div class="card" style="margin-top:1rem">
+                <h3 style="margin-bottom:0.5rem">Как это работает?</h3>
+                <p style="color:var(--muted); font-size:0.9rem; line-height:1.7">
+                    Все изменения сохраняются в браузере и автоматически отображаются на лендинге.<br>
+                    Добавляйте новые услуги, меняйте заголовки и контактную информацию без редактирования кода.
+                </p>
+            </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="page" id="page-services">
+            <div class="page-header">
+                <h1>Управление услугами</h1>
+                <p>Добавляйте, редактируйте и удаляйте карточки услуг</p>
+            </div>
+            <div class="services-toolbar">
+                <div class="services-count" id="servicesCount">Загрузка...</div>
+                <button class="btn btn-primary" onclick="openAddModal()">
+                    <i data-lucide="plus" style="width:16px;height:16px"></i>
+                    Добавить услугу
+                </button>
+            </div>
+            <div class="services-list" id="servicesList"></div>
+        </div>
+
+        <!-- TEXTS -->
+        <div class="page" id="page-texts">
+            <div class="page-header">
+                <h1>Редактор текстов</h1>
+                <p>Изменяйте заголовки и описания разделов сайта</p>
+            </div>
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+                <button class="btn btn-primary" onclick="saveTexts()">
+                    <i data-lucide="save" style="width:16px;height:16px"></i>
+                    Сохранить изменения
+                </button>
+            </div>
+            <div class="card">
+                <div class="text-section">
+                    <div class="text-section-title">Hero — Главный экран</div>
+                    <div class="text-field">
+                        <div class="text-field-label">Заголовок H1</div>
+                        <input id="t_hero_title" placeholder="Ремонт гибридных автомобилей в Кишиневе">
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">Подзаголовок</div>
+                        <input id="t_hero_subtitle" placeholder="Диагностика и ремонт батарей...">
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">Текст кнопки</div>
+                        <input id="t_hero_btn" placeholder="Записаться на диагностику">
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text-section-title">Услуги — Раздел</div>
+                    <div class="text-field">
+                        <div class="text-field-label">Заголовок раздела</div>
+                        <input id="t_services_title" placeholder="Что мы ремонтируем">
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">Описание раздела</div>
+                        <input id="t_services_subtitle" placeholder="Полный спектр работ...">
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text-section-title">О нас — Раздел</div>
+                    <div class="text-field">
+                        <div class="text-field-label">Заголовок</div>
+                        <input id="t_about_title" placeholder="Точная диагностика и решение проблемы">
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">Описание</div>
+                        <input id="t_about_desc" placeholder="Мы находим причину неисправности...">
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text-section-title">CTA — Призыв к действию</div>
+                    <div class="text-field">
+                        <div class="text-field-label">Заголовок CTA блока</div>
+                        <input id="t_cta_title" placeholder="Запишитесь на диагностику">
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">Подзаголовок CTA</div>
+                        <input id="t_cta_subtitle" placeholder="Оставьте заявку">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACTS -->
+        <div class="page" id="page-contacts">
+            <div class="page-header">
+                <h1>Контактная информация</h1>
+                <p>Адрес, телефон и ссылки на соцсети</p>
+            </div>
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+                <button class="btn btn-primary" onclick="saveContacts()">
+                    <i data-lucide="save" style="width:16px;height:16px"></i>
+                    Сохранить
+                </button>
+            </div>
+            <div class="card">
+                <div class="text-section">
+                    <div class="text-section-title">Основные контакты</div>
+                    <div class="form-row">
+                        <div class="text-field">
+                            <div class="text-field-label">Телефон</div>
+                            <input id="c_phone" placeholder="+373 68 771 547">
+                        </div>
+                        <div class="text-field">
+                            <div class="text-field-label">Адрес</div>
+                            <input id="c_address" placeholder="Кишинев, ул. Grenoble 7">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="text-field">
+                            <div class="text-field-label">Часы работы (Пн-Пт)</div>
+                            <input id="c_hours_wd" placeholder="9:00-18:00">
+                        </div>
+                        <div class="text-field">
+                            <div class="text-field-label">Часы работы (Сб)</div>
+                            <input id="c_hours_sat" placeholder="9:00-14:00">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-section">
+                    <div class="text-section-title">Социальные сети</div>
+                    <div class="form-row">
+                        <div class="text-field">
+                            <div class="text-field-label">Instagram</div>
+                            <input id="c_instagram" placeholder="https://instagram.com/ToyTech.md">
+                        </div>
+                        <div class="text-field">
+                            <div class="text-field-label">Facebook</div>
+                            <input id="c_facebook" placeholder="https://facebook.com/ToyTech.md">
+                        </div>
+                    </div>
+                    <div class="text-field">
+                        <div class="text-field-label">TikTok</div>
+                        <input id="c_tiktok" placeholder="https://tiktok.com/@toytech.md">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="page" id="page-settings">
+            <div class="page-header">
+                <h1>Настройки</h1>
+                <p>Подключение Google Sheets и другие параметры</p>
+            </div>
+
+            <div class="card">
+                <div class="text-section-title">Готовое подключение Google Sheets</div>
+                <p style="color:var(--muted);font-size:0.9rem;line-height:1.7;margin-bottom:1.25rem">
+                    Данные будут сохраняться в вашей Google Таблице И будут доступны с любого устройства.
+                    При передаче клиенту — он просто вставляет свою ссылку в это поле.
+                </p>
+                <div class="text-field">
+                    <div class="text-field-label">Apps Script URL</div>
+                    <div style="display:flex;gap:0.75rem">
+                        <input id="sheetsUrl" placeholder="https://script.google.com/macros/s/YOUR_ID/exec" style="flex:1">
+                        <button class="btn btn-primary" onclick="connectSheets()">Подключить</button>
+                    </div>
+                    <div id="sheetsConnectStatus" style="margin-top:0.5rem;font-size:0.85rem;"></div>
+                </div>
+
+                <div style="display:flex;gap:0.75rem;margin-top:1rem;flex-wrap:wrap">
+                    <button class="btn btn-ghost" onclick="syncToSheets()" id="btnSyncUp">
+                        <i data-lucide="upload-cloud" style="width:16px;height:16px"></i>
+                        Загрузить в Sheets
+                    </button>
+                    <button class="btn btn-ghost" onclick="syncFromSheets()" id="btnSyncDown">
+                        <i data-lucide="download-cloud" style="width:16px;height:16px"></i>
+                        Скачать из Sheets
+                    </button>
+                    <button class="btn btn-danger" onclick="disconnectSheets()">
+                        <i data-lucide="x-circle" style="width:16px;height:16px"></i>
+                        Отключить
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:1rem">
+                <div class="text-section-title">Инструкция: как подключить Google Sheets</div>
+                <ol style="color:var(--muted);font-size:0.9rem;line-height:2;padding-left:1.25rem">
+                    <li>Открой <a href="https://sheets.new" target="_blank" style="color:var(--red)">sheets.new</a> — создай таблицу «<b>ToyTech CMS</b>»</li>
+                    <li>В таблице: верхнее меню → <b>Extensions → Apps Script</b></li>
+                    <li>Удали старый код, вставь код из файла <b>apps-script.gs</b></li>
+                    <li>Нажми <b>Deploy → New deployment → Web App</b></li>
+                    <li>Установи: «<b>Execute as: Me</b>» и «<b>Who has access: Anyone</b>»</li>
+                    <li>Нажми <b>Deploy</b> → скопируй URL → вставь выше</li>
+                </ol>
+            </div>
+
+            <div class="card" style="margin-top:1rem">
+                <div class="text-section-title">Пароль админки</div>
+                <div style="display:flex;gap:0.75rem;align-items:flex-end">
+                    <div class="text-field" style="flex:1;margin:0">
+                        <div class="text-field-label">Новый пароль</div>
+                        <input id="newPassword" type="password" placeholder="Введите новый пароль">
+                    </div>
+                    <button class="btn btn-ghost" onclick="changePassword()">Сменить</button>
+                </div>
+                <p style="color:var(--dim);font-size:0.8rem;margin-top:0.5rem">Текущий: <b id="currentPwdHint"></b></p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ADD/EDIT SERVICE MODAL -->
+<div class="modal-overlay" id="serviceModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 id="modalTitle">Добавить услугу</h2>
+            <button class="modal-close" onclick="closeModal()">
+                <i data-lucide="x" style="width:20px;height:20px"></i>
+            </button>
+        </div>
+        <input type="hidden" id="editingId">
+        <div class="form-group">
+            <label>Название услуги</label>
+            <input id="svc_name" placeholder="Гибридные системы">
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea id="svc_desc" placeholder="Ремонт батарей, инверторов и высоковольтных систем..."></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Бейдж / Цена</label>
+                <input id="svc_badge" placeholder="Диагностика">
+            </div>
+            <div class="form-group">
+                <label>Тип отображения</label>
+                <select id="svc_type">
+                    <option value="main">Основная (всегда видна)</option>
+                    <option value="extra">Дополнительная (скрыта)</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Иконка</label>
+            <div class="icon-grid" id="iconGrid"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal()">Отмена</button>
+            <button class="btn btn-primary" onclick="saveService()">
+                <i data-lucide="check" style="width:16px;height:16px"></i>
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <i data-lucide="check-circle" style="width:18px;height:18px"></i>
+    <span id="toastText">Сохранено!</span>
+</div>
+
+<script>
+    // ── CONFIG ──
+    let PASSWORD = localStorage.getItem('tt_password') || 'toytech2024';
+    const ICONS = ['battery-charging','cog','zap','wind','brush','bike','wrench','shield-check','gauge','thermometer','box','droplets','air-vent','cpu','car','tool','settings','check-circle','star','trending-up','award','rocket'];
+
+    // ── STATE ──
+    let services = [];
+    let customTexts = {};
+    let customContacts = {};
+    let editingId = null;
+    let selectedIcon = 'wrench';
+
+    // ── INIT ──
+    function init() {
+        if (sessionStorage.getItem('tt_auth') === '1') {
+            showApp();
+        }
+        document.getElementById('passwordInput').addEventListener('keydown', e => {
+            if (e.key === 'Enter') login();
+        });
+    }
+
+    function login() {
+        const pwd = document.getElementById('passwordInput').value;
+        const err = document.getElementById('loginError');
+        if (pwd === PASSWORD) {
+            sessionStorage.setItem('tt_auth', '1');
+            err.style.display = 'none';
+            showApp();
+        } else {
+            err.style.display = 'block';
+            document.getElementById('passwordInput').value = '';
+        }
+    }
+
+    function logout() {
+        sessionStorage.removeItem('tt_auth');
+        document.getElementById('app').style.display = 'none';
+        document.getElementById('loginScreen').style.display = 'flex';
+    }
+
+    function showApp() {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        loadData();
+        buildIconGrid();
+        lucide.createIcons();
+        updateStats();
+        initSheetsUI();
+        document.getElementById('currentPwdHint').textContent = PASSWORD;
+    }
+
+    // ── GOOGLE SHEETS ──
+    function getSheetsUrl() { return localStorage.getItem('tt_sheets_url') || ''; }
+
+    function initSheetsUI() {
+        const url = getSheetsUrl();
+        const status = document.getElementById('sheetsStatus');
+        const urlInput = document.getElementById('sheetsUrl');
+        if (urlInput) urlInput.value = url;
+        if (url) {
+            status.style.display = 'block';
+            status.style.background = 'rgba(34,197,94,0.1)';
+            status.style.color = '#22c55e';
+            status.textContent = '✓ Google Sheets подключён';
+        } else {
+            status.style.display = 'block';
+            status.style.background = 'rgba(115,115,115,0.1)';
+            status.style.color = 'var(--dim)';
+            status.textContent = '○ Режим: localStorage';
+        }
+    }
+
+    async function sheetsGet() {
+        const url = getSheetsUrl();
+        if (!url) return null;
+        try {
+            const r = await fetch(url);
+            return await r.json();
+        } catch(e) { return null; }
+    }
+
+    async function sheetsSet(key, value) {
+        const url = getSheetsUrl();
+        if (!url) return false;
+        try {
+            await fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({ key, value })
+            });
+            return true;
+        } catch(e) { return false; }
+    }
+
+    async function connectSheets() {
+        const url = document.getElementById('sheetsUrl').value.trim();
+        const statusEl = document.getElementById('sheetsConnectStatus');
+        if (!url) return;
+        statusEl.style.color = 'var(--muted)';
+        statusEl.textContent = 'Проверка подключения...';
+        try {
+            const r = await fetch(url);
+            const data = await r.json();
+            localStorage.setItem('tt_sheets_url', url);
+            statusEl.style.color = 'var(--green)';
+            statusEl.textContent = '✓ Подключено! Данные в таблице: ' + JSON.stringify(Object.keys(data));
+            initSheetsUI();
+            showToast('Готово! Схема подключена');
+        } catch(e) {
+            statusEl.style.color = '#f87171';
+            statusEl.textContent = '✗ Ошибка: ' + e.message + '. Проверь URL.';
+        }
+    }
+
+    async function syncToSheets() {
+        const btn = document.getElementById('btnSyncUp');
+        btn.textContent = 'Загрузка...';
+        await sheetsSet('services', services);
+        await sheetsSet('texts', customTexts);
+        await sheetsSet('contacts', customContacts);
+        btn.innerHTML = '<i data-lucide="upload-cloud" style="width:16px;height:16px"></i> Загрузить в Sheets';
+        showToast('Данные отправлены в Google Sheets!');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    async function syncFromSheets() {
+        const btn = document.getElementById('btnSyncDown');
+        btn.textContent = 'Загрузка...';
+        const data = await sheetsGet();
+        if (!data) { showToast('Ошибка загрузки'); return; }
+        if (data.services) { services = data.services; localStorage.setItem('tt_services', JSON.stringify(services)); }
+        if (data.texts) { customTexts = data.texts; localStorage.setItem('tt_texts', JSON.stringify(customTexts)); }
+        if (data.contacts) { customContacts = data.contacts; localStorage.setItem('tt_contacts', JSON.stringify(customContacts)); }
+        renderServices(); loadTextFields(); loadContactFields(); updateStats();
+        btn.innerHTML = '<i data-lucide="download-cloud" style="width:16px;height:16px"></i> Скачать из Sheets';
+        showToast('Данные загружены из Google Sheets!');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function disconnectSheets() {
+        if (!confirm('Отключить Google Sheets? Данные останутся в localStorage.')) return;
+        localStorage.removeItem('tt_sheets_url');
+        document.getElementById('sheetsUrl').value = '';
+        document.getElementById('sheetsConnectStatus').textContent = '';
+        initSheetsUI();
+        showToast('Отключено');
+    }
+
+    function changePassword() {
+        const newPwd = document.getElementById('newPassword').value.trim();
+        if (!newPwd || newPwd.length < 4) { alert('Минимум 4 символа'); return; }
+        localStorage.setItem('tt_password', newPwd);
+        PASSWORD = newPwd;
+        document.getElementById('currentPwdHint').textContent = newPwd;
+        document.getElementById('newPassword').value = '';
+        showToast('Пароль изменён!');
+    }
+
+    // ── DATA ──
+    function loadData() {
+        services = JSON.parse(localStorage.getItem('tt_services') || '[]');
+        customTexts = JSON.parse(localStorage.getItem('tt_texts') || '{}');
+        customContacts = JSON.parse(localStorage.getItem('tt_contacts') || '{}');
+        renderServices();
+        loadTextFields();
+        loadContactFields();
+    }
+
+    async function saveData() {
+        localStorage.setItem('tt_services', JSON.stringify(services));
+        if (getSheetsUrl()) await sheetsSet('services', services);
+    }
+
+    // ── PAGES ──
+    function showPage(name) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        document.getElementById('page-' + name).classList.add('active');
+        document.getElementById('nav-' + name).classList.add('active');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    // ── SERVICES ──
+    function renderServices() {
+        const list = document.getElementById('servicesList');
+        const count = document.getElementById('servicesCount');
+        const main = services.filter(s => s.type === 'main');
+        const extra = services.filter(s => s.type === 'extra');
+        count.textContent = `Всего: ${services.length} услуг (${main.length} основных, ${extra.length} дополнительных)`;
+
+        if (services.length === 0) {
+            list.innerHTML = `<div class="empty-state">
+                <i data-lucide="package-open" style="width:48px;height:48px"></i>
+                <h3>Нет добавленных услуг</h3>
+                <p>Нажмите «Добавить услугу» чтобы начать</p>
+            </div>`;
+            setTimeout(() => lucide.createIcons(), 50);
+            return;
+        }
+
+        const render = (items, label) => {
+            if (!items.length) return '';
+            return `<div style="color:var(--dim);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin:1rem 0 0.5rem">${label}</div>` +
+                items.map(s => `
+                <div class="service-row">
+                    <div class="service-row-icon">
+                        <i data-lucide="${s.icon}" style="width:22px;height:22px"></i>
+                    </div>
+                    <div class="service-row-info">
+                        <h3>${s.name}</h3>
+                        <p>${s.desc}</p>
+                    </div>
+                    <span class="service-row-badge">${s.badge || '–'}</span>
+                    <div class="service-row-actions">
+                        <button class="btn btn-ghost" onclick="editService('${s.id}')" style="padding:0.5rem">
+                            <i data-lucide="pencil" style="width:15px;height:15px"></i>
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteService('${s.id}')" style="padding:0.5rem">
+                            <i data-lucide="trash-2" style="width:15px;height:15px"></i>
+                        </button>
+                    </div>
+                </div>`).join('');
+        };
+
+        list.innerHTML = render(main, '📌 Основные услуги') + render(extra, '➕ Дополнительные услуги');
+        setTimeout(() => lucide.createIcons(), 50);
+        updateStats();
+    }
+
+    function openAddModal() {
+        editingId = null;
+        document.getElementById('modalTitle').textContent = 'Добавить услугу';
+        document.getElementById('editingId').value = '';
+        document.getElementById('svc_name').value = '';
+        document.getElementById('svc_desc').value = '';
+        document.getElementById('svc_badge').value = '';
+        document.getElementById('svc_type').value = 'main';
+        selectIcon('wrench');
+        document.getElementById('serviceModal').classList.add('open');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function editService(id) {
+        const svc = services.find(s => s.id === id);
+        if (!svc) return;
+        editingId = id;
+        document.getElementById('modalTitle').textContent = 'Редактировать услугу';
+        document.getElementById('editingId').value = id;
+        document.getElementById('svc_name').value = svc.name;
+        document.getElementById('svc_desc').value = svc.desc;
+        document.getElementById('svc_badge').value = svc.badge || '';
+        document.getElementById('svc_type').value = svc.type || 'main';
+        selectIcon(svc.icon || 'wrench');
+        document.getElementById('serviceModal').classList.add('open');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function saveService() {
+        const name = document.getElementById('svc_name').value.trim();
+        const desc = document.getElementById('svc_desc').value.trim();
+        const badge = document.getElementById('svc_badge').value.trim();
+        const type = document.getElementById('svc_type').value;
+        if (!name) { document.getElementById('svc_name').focus(); return; }
+        if (editingId) {
+            const idx = services.findIndex(s => s.id === editingId);
+            if (idx !== -1) services[idx] = { ...services[idx], name, desc, badge, type, icon: selectedIcon };
+        } else {
+            services.push({ id: Date.now().toString(), name, desc, badge, type, icon: selectedIcon });
+        }
+        saveData();
+        closeModal();
+        renderServices();
+        showToast(editingId ? 'Услуга обновлена!' : 'Услуга добавлена!');
+    }
+
+    function deleteService(id) {
+        if (!confirm('Удалить эту услугу?')) return;
+        services = services.filter(s => s.id !== id);
+        saveData();
+        renderServices();
+        showToast('Услуга удалена');
+    }
+
+    function closeModal() {
+        document.getElementById('serviceModal').classList.remove('open');
+    }
+
+    // ── ICON PICKER ──
+    function buildIconGrid() {
+        const grid = document.getElementById('iconGrid');
+        grid.innerHTML = ICONS.map(icon => `
+            <div class="icon-btn" onclick="selectIcon('${icon}')" id="icon-${icon}" title="${icon}">
+                <i data-lucide="${icon}" style="width:18px;height:18px"></i>
+            </div>`).join('');
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function selectIcon(icon) {
+        selectedIcon = icon;
+        document.querySelectorAll('.icon-btn').forEach(b => b.classList.remove('selected'));
+        const btn = document.getElementById('icon-' + icon);
+        if (btn) btn.classList.add('selected');
+    }
+
+    // ── TEXTS ──
+    function loadTextFields() {
+        const defaults = {
+            hero_title: 'Ремонт гибридных автомобилей в Кишиневе',
+            hero_subtitle: 'Диагностика и ремонт батарей, инверторов и высоковольтных систем',
+            hero_btn: 'Записаться на диагностику',
+            services_title: 'Что мы ремонтируем',
+            services_subtitle: 'Полный спектр работ: от батарей до кузовного ремонта',
+            about_title: 'Точная диагностика и решение проблемы',
+            about_desc: 'Мы находим причину неисправности и устраняем её',
+            cta_title: 'Запишитесь на диагностику',
+            cta_subtitle: 'Оставьте заявку — мы свяжемся с вами и подберем удобное время',
+        };
+        Object.entries(defaults).forEach(([k, v]) => {
+            const el = document.getElementById('t_' + k);
+            if (el) el.value = customTexts[k] || '';
+            if (el && !el.placeholder) el.placeholder = v;
+        });
+    }
+
+    async function saveTexts() {
+        const keys = ['hero_title','hero_subtitle','hero_btn','services_title','services_subtitle','about_title','about_desc','cta_title','cta_subtitle'];
+        keys.forEach(k => {
+            const el = document.getElementById('t_' + k);
+            if (el) customTexts[k] = el.value.trim();
+        });
+        localStorage.setItem('tt_texts', JSON.stringify(customTexts));
+        if (getSheetsUrl()) await sheetsSet('texts', customTexts);
+        updateStats();
+        showToast('Тексты сохранены!');
+    }
+
+    // ── CONTACTS ──
+    function loadContactFields() {
+        const defaults = {
+            phone: '+373 68 771 547',
+            address: 'Кишинев, ул. Grenoble 7',
+            hours_wd: '9:00-18:00',
+            hours_sat: '9:00-14:00',
+            instagram: 'https://instagram.com/ToyTech.md',
+            facebook: 'https://facebook.com/ToyTech.md',
+            tiktok: 'https://tiktok.com/@toytech.md',
+        };
+        Object.entries(defaults).forEach(([k, v]) => {
+            const el = document.getElementById('c_' + k);
+            if (el) el.value = customContacts[k] || '';
+            if (el && !el.placeholder) el.placeholder = v;
+        });
+    }
+
+    async function saveContacts() {
+        const keys = ['phone','address','hours_wd','hours_sat','instagram','facebook','tiktok'];
+        keys.forEach(k => {
+            const el = document.getElementById('c_' + k);
+            if (el) customContacts[k] = el.value.trim();
+        });
+        localStorage.setItem('tt_contacts', JSON.stringify(customContacts));
+        if (getSheetsUrl()) await sheetsSet('contacts', customContacts);
+        showToast('Контакты сохранены!');
+    }
+
+    // ── STATS ──
+    function updateStats() {
+        document.getElementById('stat-services').textContent = services.length;
+        const changed = Object.values(customTexts).filter(v => v).length;
+        document.getElementById('stat-texts').textContent = changed;
+    }
+
+    // ── TOAST ──
+    function showToast(msg = 'Сохранено!') {
+        const t = document.getElementById('toast');
+        document.getElementById('toastText').textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ── CLOSE MODAL ON BACKDROP ──
+    document.getElementById('serviceModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    init();
+</script>
+</body>
+</html>
