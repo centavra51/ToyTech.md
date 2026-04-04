@@ -859,6 +859,7 @@
         const count = document.getElementById('servicesCount');
         const main = services.filter(s => s.type === 'main');
         const extra = services.filter(s => s.type === 'extra');
+
         count.textContent = `Всего: ${services.length} услуг (${main.length} основных, ${extra.length} дополнительных)`;
 
         if (services.length === 0) {
@@ -933,13 +934,16 @@
         const desc = document.getElementById('svc_desc').value.trim();
         const badge = document.getElementById('svc_badge').value.trim();
         const type = document.getElementById('svc_type').value;
+
         if (!name) { document.getElementById('svc_name').focus(); return; }
+
         if (editingId) {
             const idx = services.findIndex(s => s.id === editingId);
             if (idx !== -1) services[idx] = { ...services[idx], name, desc, badge, type, icon: selectedIcon };
         } else {
-            services.push({ id: Date.now().toString(), name, desc, badge, type, icon: selectedIcon });
+            services.unshift({ id: Date.now().toString(), name, desc, badge, type, icon: selectedIcon });
         }
+
         saveData();
         closeModal();
         renderServices();
